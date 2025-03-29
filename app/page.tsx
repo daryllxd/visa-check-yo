@@ -1,6 +1,6 @@
-import Link from 'next/link';
+import Link from "next/link";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -8,9 +8,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+} from "@/components/ui/card";
+import { headers } from "next/headers";
 
-export default function Home() {
+export default async function Home() {
+  const headersList = await headers();
+  const currentPath = headersList.get("host");
+
   return (
     <div className="container mx-auto px-4 py-12">
       <section className="py-12 md:py-24 lg:py-32">
@@ -18,10 +22,13 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
-                Check Where You Can Travel
+                {currentPath?.includes("visa-check.local")
+                  ? "Check Where You Can Travel"
+                  : "Check Visa Requirements"}
               </h1>
               <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                Discover which countries you can visit based on your nationality and visas.
+                Discover which countries you can visit based on your nationality
+                and visas.
               </p>
             </div>
             <div className="space-x-4">
@@ -42,12 +49,14 @@ export default function Home() {
             <Card>
               <CardHeader>
                 <CardTitle>Check Visa Requirements</CardTitle>
-                <CardDescription>See which countries you can visit visa-free</CardDescription>
+                <CardDescription>
+                  See which countries you can visit visa-free
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-sm">
-                  Enter your nationality and see which countries you can visit without a visa or
-                  with visa-on-arrival.
+                  Enter your nationality and see which countries you can visit
+                  without a visa or with visa-on-arrival.
                 </p>
               </CardContent>
               <CardFooter>
@@ -59,12 +68,14 @@ export default function Home() {
             <Card>
               <CardHeader>
                 <CardTitle>Map Visualization</CardTitle>
-                <CardDescription>Interactive world map to explore options</CardDescription>
+                <CardDescription>
+                  Interactive world map to explore options
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-sm">
-                  Visualize all countries you can visit on an interactive world map with color
-                  coding based on access type.
+                  Visualize all countries you can visit on an interactive world
+                  map with color coding based on access type.
                 </p>
               </CardContent>
               <CardFooter>
@@ -80,8 +91,8 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-sm">
-                  Create and save travel routes based on your visa eligibility and plan trips
-                  accordingly.
+                  Create and save travel routes based on your visa eligibility
+                  and plan trips accordingly.
                 </p>
               </CardContent>
               <CardFooter>
