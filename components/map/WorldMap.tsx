@@ -1,12 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Country } from "@/app/api/countries/route";
+import { memo } from "react";
 import {
   ComposableMap,
   Geographies,
   Geography,
   ZoomableGroup,
 } from "react-simple-maps";
+import WontFix from "@/types/wontfix";
 
 // Sample data - mapping country code to visa status
 const countryStatus: Record<string, string> = {
@@ -37,26 +39,21 @@ const getStatusColor = (status: string) => {
   }
 };
 
-const WorldMap = ({ geographies }: { geographies: WontFix.NoNeedToCare }) => {
-  const [tooltipContent, setTooltipContent] = useState("");
-
+const WorldMap = ({
+  geographies,
+  visaRequirements,
+  setTooltipContent,
+}: {
+  geographies: WontFix.NoNeedToCare;
+  visaRequirements: Country[];
+  setTooltipContent: (
+    content: { x: number; y: number; content: string } | null,
+  ) => void;
+}) => {
   return (
     <div className="relative h-full w-full">
-      <code>{JSON.stringify(tooltipContent)}</code>
-      {tooltipContent && (
-        <div
-          className="absolute z-10 rounded bg-black/80 px-2 py-1 text-xs text-white"
-          style={{
-            left: `${tooltipContent.x}px`,
-            top: `${tooltipContent.y - 300}px`,
-          }}
-        >
-          {tooltipContent.content} - {countryStatus[tooltipContent.content]}
-        </div>
-      )}
-
       <ComposableMap
-        projection="geoEqualEarth"
+        projection="geoMercator"
         projectionConfig={{
           scale: 200,
         }}
@@ -66,7 +63,7 @@ const WorldMap = ({ geographies }: { geographies: WontFix.NoNeedToCare }) => {
         <ZoomableGroup>
           <Geographies geography={geographies}>
             {({ geographies }: { geographies: WontFix.NoNeedToCare }) =>
-              geographies.map((geo) => {
+              geographies.map((geo: any) => {
                 const status = countryStatus[geo.id] || "unknown";
                 return (
                   <Geography
@@ -83,17 +80,8 @@ const WorldMap = ({ geographies }: { geographies: WontFix.NoNeedToCare }) => {
                       hover: { outline: "none", fill: "#CBD5E1" },
                       pressed: { outline: "none" },
                     }}
-                    onMouseEnter={(evt) => {
-                      const { pageX, pageY } = evt;
-                      setTooltipContent({
-                        x: pageX,
-                        y: pageY,
-                        content: `${geo.properties.name}`,
-                      });
-                    }}
-                    onMouseLeave={() => {
-                      setTooltipContent("");
-                    }}
+                    data-tooltip-id="map-tooltip"
+                    data-tooltip-content={geo.properties.name}
                   />
                 );
               })
@@ -101,8 +89,34 @@ const WorldMap = ({ geographies }: { geographies: WontFix.NoNeedToCare }) => {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
+      {/* Add a Legend */}
+      <div className="absolute bottom-4 right-4 bg-white p-2 rounded shadow-md">
+        <h4 className="text-sm font-bold mb-1">Visa Requirements</h4>
+        <div className="grid grid-cols-1 gap-1">
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-[#34D399] mr-2"></div>
+            <span className="text-xs">Visa Not Required</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-[#FBBF24] mr-2"></div>
+            <span className="text-xs">Visa on Arrival</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-[#60A5FA] mr-2"></div>
+            <span className="text-xs">eVisa</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-[#F87171] mr-2"></div>
+            <span className="text-xs">Visa Required</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-[#8B5CF6] mr-2"></div>
+            <span className="text-xs">Home Country</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default WorldMap;
+export default memo(WorldMap);
