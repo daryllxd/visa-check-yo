@@ -1,5 +1,6 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import Link from 'next/link';
+
+import { Button } from '@/components/ui/button';
 
 export function Header() {
   return (
@@ -11,21 +12,15 @@ export function Header() {
           </Link>
         </div>
         <nav className="hidden space-x-6 md:flex">
-          <Link
-            href="/"
-            className="text-sm font-medium transition-colors hover:text-primary"
-          >
+          <Link href="/" className="hover:text-primary text-sm font-medium transition-colors">
             Home
           </Link>
-          <Link
-            href="/about"
-            className="text-sm font-medium transition-colors hover:text-primary"
-          >
+          <Link href="/about" className="hover:text-primary text-sm font-medium transition-colors">
             About
           </Link>
           <Link
             href="/contact"
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="hover:text-primary text-sm font-medium transition-colors"
           >
             Contact
           </Link>
