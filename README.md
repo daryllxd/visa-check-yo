@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Visa Check
+
+A web application to help travelers check which countries they can visit based on their nationality and existing visas.
+
+## Features
+
+- **Visa Eligibility Checker**: Check which countries you can visit based on your citizenship
+- **Interactive World Map**: Visualize where you can travel with color-coded access types
+- **Travel Planning**: Plan international trips based on your visa eligibility
+
+## Technology Stack
+
+- **Framework**: Next.js with App Router
+- **Styling**: Tailwind CSS
+- **UI Components**: ShadCN UI
+- **Data Fetching**: TanStack Query (React Query)
+- **Form Handling**: React Hook Form
+- **Package Manager**: PNPM
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.17 or later
+- PNPM package manager
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd visa-check-yo
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Start the development server:
 
-## Learn More
+```bash
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `app/`: Next.js App Router pages and layouts
+- `components/`: Reusable UI components
+  - `layout/`: Layout components like Header and Footer
+  - `ui/`: ShadCN UI components
+- `lib/`: Utility functions and shared code
+- `public/`: Static assets
 
-## Deploy on Vercel
+## Future Integrations
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The application is designed to be easily extended with:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Database integration (Supabase, Prisma, etc.)
+- Authentication system
+- Map visualization libraries
+- Country and visa data APIs
+
+## License
+
+MIT
