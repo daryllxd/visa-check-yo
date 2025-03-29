@@ -12,18 +12,19 @@ import {
 const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-110m.json";
 
 // Sample data - mapping country code to visa status
-const countryStatus = {
-  USA: "visa-required",
-  CAN: "visa-free",
+const countryStatus: Record<string, string> = {
+  "United States of America": "visa-required",
+  Canada: "visa-free",
   GBR: "visa-on-arrival",
   FRA: "visa-free",
   JPN: "e-visa",
   AUS: "visa-required",
+  Philippines: "own-country",
   // Add more countries as needed
 };
 
-const getStatusColor = (status) => {
-  switch (status) {
+const getStatusColor = (status: string) => {
+  switch (countryStatus[status]) {
     case "visa-free":
       return "#34D399"; // green
     case "visa-on-arrival":
@@ -32,6 +33,8 @@ const getStatusColor = (status) => {
       return "#60A5FA"; // blue
     case "visa-required":
       return "#F87171"; // red
+    case "own-country":
+      return "#60A5FA"; // blue
     default:
       return "#94A3B8"; // gray
   }
@@ -50,15 +53,16 @@ const WorldMap = () => {
 
   return (
     <div className="relative h-full w-full">
+      <code>{JSON.stringify(tooltipContent)}</code>
       {tooltipContent && (
         <div
           className="absolute z-10 rounded bg-black/80 px-2 py-1 text-xs text-white"
           style={{
             left: `${tooltipContent.x}px`,
-            top: `${tooltipContent.y}px`,
+            top: `${tooltipContent.y - 300}px`,
           }}
         >
-          {tooltipContent.content}
+          {tooltipContent.content} - {countryStatus[tooltipContent.content]}
         </div>
       )}
 
@@ -83,7 +87,10 @@ const WorldMap = () => {
                     stroke="#FFFFFF"
                     strokeWidth={0.5}
                     style={{
-                      default: { outline: "none" },
+                      default: {
+                        outline: "none",
+                        fill: getStatusColor(geo.properties.name),
+                      },
                       hover: { outline: "none", fill: "#CBD5E1" },
                       pressed: { outline: "none" },
                     }}
@@ -91,8 +98,8 @@ const WorldMap = () => {
                       const { pageX, pageY } = evt;
                       setTooltipContent({
                         x: pageX,
-                        y: pageY - 40,
-                        content: `${geo.properties.name} (${status.replace("-", " ")})`,
+                        y: pageY,
+                        content: `${geo.properties.name}`,
                       });
                     }}
                     onMouseLeave={() => {
