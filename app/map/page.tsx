@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Card,
   CardContent,
@@ -11,7 +9,6 @@ import dynamic from "next/dynamic";
 
 // Import WorldMap with SSR disabled
 const WorldMap = dynamic(() => import("@/components/map/WorldMap"), {
-  ssr: false,
   loading: () => (
     <div className="flex h-[500px] w-full items-center justify-center">
       <p className="text-muted-foreground">Loading map visualization...</p>
@@ -19,7 +16,11 @@ const WorldMap = dynamic(() => import("@/components/map/WorldMap"), {
   ),
 });
 
-export default function MapPage() {
+export default async function MapPage() {
+  const geographies = await fetch(
+    "https://unpkg.com/world-atlas@2.0.2/countries-110m.json",
+  ).then((res) => res.json());
+
   return (
     <div className="container mx-auto px-4 py-12">
       <h1 className="mb-8 text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
@@ -34,7 +35,7 @@ export default function MapPage() {
         </CardHeader>
         <CardContent className="p-0">
           <div className="h-[600px] w-full">
-            <WorldMap />
+            <WorldMap geographies={geographies} />
           </div>
         </CardContent>
       </Card>

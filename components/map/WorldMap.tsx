@@ -8,9 +8,6 @@ import {
   ZoomableGroup,
 } from "react-simple-maps";
 
-// @todo: use the geoUrl from the api - https://github.com/zcreativelabs/react-simple-maps/pull/350
-const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-110m.json";
-
 // Sample data - mapping country code to visa status
 const countryStatus: Record<string, string> = {
   "United States of America": "visa-required",
@@ -40,16 +37,8 @@ const getStatusColor = (status: string) => {
   }
 };
 
-const WorldMap = () => {
+const WorldMap = ({ geographies }: { geographies: WontFix.NoNeedToCare }) => {
   const [tooltipContent, setTooltipContent] = useState("");
-
-  const [countries, setCountries] = useState([]);
-
-  useEffect(() => {
-    fetch("/api/countries")
-      .then((response) => response.json())
-      .then((data) => setCountries(data));
-  }, []);
 
   return (
     <div className="relative h-full w-full">
@@ -75,7 +64,7 @@ const WorldMap = () => {
         height={580}
       >
         <ZoomableGroup>
-          <Geographies geography={geoUrl}>
+          <Geographies geography={geographies}>
             {({ geographies }: { geographies: WontFix.NoNeedToCare }) =>
               geographies.map((geo) => {
                 const status = countryStatus[geo.id] || "unknown";
