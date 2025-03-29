@@ -7,7 +7,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Globe from "@/components/map/Globe";
+import dynamic from "next/dynamic";
+
+// Import WorldMap with SSR disabled
+const WorldMap = dynamic(() => import("@/components/map/WorldMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-[500px] w-full items-center justify-center">
+      <p className="text-muted-foreground">Loading map visualization...</p>
+    </div>
+  ),
+});
 
 export default function MapPage() {
   return (
@@ -23,7 +33,9 @@ export default function MapPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="p-0">
-          <div className="h-[600px] w-full"></div>
+          <div className="h-[600px] w-full">
+            <WorldMap />
+          </div>
         </CardContent>
       </Card>
     </div>
