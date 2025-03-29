@@ -47,6 +47,8 @@ pnpm dev
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
+4.1. Can also update host file and run `pnpm run dev:https` to open in `https://visa-check.local:3000/`
+
 ## Project Structure
 
 - `app/`: Next.js App Router pages and layouts
