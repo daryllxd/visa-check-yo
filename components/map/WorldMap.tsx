@@ -72,7 +72,7 @@ const WorldMap = () => {
       >
         <ZoomableGroup>
           <Geographies geography={geoUrl}>
-            {({ geographies }) =>
+            {({ geographies }: { geographies: WontFix.NoNeedToCare }) =>
               geographies.map((geo) => {
                 const status = countryStatus[geo.id] || "unknown";
                 return (
