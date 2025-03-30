@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -41,6 +41,12 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-visa-free: rgb(52, 211, 153); /* #34D399 in RGB */
+  --color-visa-arrival: rgb(251, 191, 36); /* #FBBF24 in RGB */
+  --color-visa-evisa: rgb(96, 165, 250); /* #60A5FA in RGB */
+  --color-visa-required: rgb(248, 113, 113); /* #F87171 in RGB */
+  --color-visa-own: rgb(139, 92, 246); /* #8B5CF6 in RGB */
+  --color-visa-unknown: rgb(148, 163, 184); /* #94A3B8 in RGB */
 }
 
 :root {
@@ -76,6 +82,12 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
+  --color-visa-free: 52, 211, 153; /* #34D399 in RGB */
+  --color-visa-arrival: 251, 191, 36; /* #FBBF24 in RGB */
+  --color-visa-evisa: 96, 165, 250; /* #60A5FA in RGB */
+  --color-visa-required: 248, 113, 113; /* #F87171 in RGB */
+  --color-visa-own: 139, 92, 246; /* #8B5CF6 in RGB */
+  --color-visa-unknown: 148, 163, 184; /* #94A3B8 in RGB */
 }
 
 .dark {
