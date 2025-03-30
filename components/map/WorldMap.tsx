@@ -1,6 +1,6 @@
 "use client";
 
-import { Country } from "@/app/api/countries/route";
+import WontFix from "@/types/wontfix";
 import { memo } from "react";
 import {
   ComposableMap,
@@ -8,7 +8,6 @@ import {
   Geography,
   ZoomableGroup,
 } from "react-simple-maps";
-import WontFix from "@/types/wontfix";
 
 // Sample data - mapping country code to visa status
 const countryStatus: Record<string, string> = {
@@ -39,17 +38,7 @@ const getStatusColor = (status: string) => {
   }
 };
 
-const WorldMap = ({
-  geographies,
-  visaRequirements,
-  setTooltipContent,
-}: {
-  geographies: WontFix.NoNeedToCare;
-  visaRequirements: Country[];
-  setTooltipContent: (
-    content: { x: number; y: number; content: string } | null,
-  ) => void;
-}) => {
+const WorldMap = ({ geographies }: { geographies: WontFix.NoNeedToCare }) => {
   return (
     <div className="relative h-full w-full">
       <ComposableMap

@@ -1,21 +1,9 @@
 "use client";
 
 import { Country } from "@/app/api/countries/route";
-import WorldMap from "./WorldMap";
-import MapTooltip from "./MapTooltip";
 import WontFix from "@/types/wontfix";
-
-// Sample data - mapping country code to visa status
-const countryStatus: Record<string, string> = {
-  "United States of America": "visa-required",
-  Canada: "visa-free",
-  GBR: "visa-on-arrival",
-  FRA: "visa-free",
-  JPN: "e-visa",
-  AUS: "visa-required",
-  Philippines: "own-country",
-  // Add more countries as needed
-};
+import MapTooltip from "./MapTooltip";
+import WorldMap from "./WorldMap";
 
 interface MapContainerProps {
   geographies: WontFix.NoNeedToCare;
@@ -25,7 +13,7 @@ interface MapContainerProps {
 const MapContainer = ({ geographies, visaRequirements }: MapContainerProps) => {
   return (
     <div className="relative h-full w-full">
-      <WorldMap geographies={geographies} visaRequirements={visaRequirements} />
+      <WorldMap geographies={geographies} />
       <MapTooltip visaRequirements={visaRequirements} />
     </div>
   );

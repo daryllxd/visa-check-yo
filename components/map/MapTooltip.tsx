@@ -1,5 +1,5 @@
 import { Country } from "@/app/api/countries/route";
-import { Tooltip } from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css"; // Import the stylesheet (for versions prior to 5.13.0)
 
 interface MapTooltipProps {
@@ -8,7 +8,7 @@ interface MapTooltipProps {
 
 const MapTooltip = ({ visaRequirements }: MapTooltipProps) => {
   return (
-    <Tooltip
+    <ReactTooltip
       id="map-tooltip"
       place="top"
       className="z-50 max-w-xs"
