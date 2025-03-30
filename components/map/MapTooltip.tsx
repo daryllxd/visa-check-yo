@@ -23,7 +23,9 @@ const MapTooltip = ({ visaRequirements }: MapTooltipProps) => {
         return (
           <div className="p-2">
             <div className="font-semibold">{country.name}</div>
-            <div>Status: {country.visaRequirement.replace(/-/g, " ")}</div>
+            <div className="text-2xl text-visa-required">
+              Status: {country.visaRequirement.replace(/-/g, " ")}
+            </div>
             {country.allowedStay && <div>Stay: {country.allowedStay}</div>}
             {country.notes && (
               <div className="mt-1 text-xs opacity-80">{country.notes}</div>

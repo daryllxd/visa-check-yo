@@ -24,17 +24,17 @@ const countryStatus: Record<string, string> = {
 const getStatusColor = (status: string) => {
   switch (countryStatus[status]) {
     case "visa-free":
-      return "#34D399"; // green
+      return "rgb(var(--color-visa-free))"; // Using CSS variable for Tailwind color
     case "visa-on-arrival":
-      return "#FBBF24"; // yellow
+      return "rgb(var(--color-visa-arrival))";
     case "e-visa":
-      return "#60A5FA"; // blue
+      return "rgb(var(--color-visa-evisa))";
     case "visa-required":
-      return "#F87171"; // red
+      return "rgb(var(--color-visa-required))";
     case "own-country":
-      return "#60A5FA"; // blue
+      return "rgb(var(--color-visa-own))";
     default:
-      return "#94A3B8"; // gray
+      return "rgb(var(--color-visa-unknown))";
   }
 };
 
@@ -83,23 +83,23 @@ const WorldMap = ({ geographies }: { geographies: WontFix.NoNeedToCare }) => {
         <h4 className="text-sm font-bold mb-1">Visa Requirements</h4>
         <div className="grid grid-cols-1 gap-1">
           <div className="flex items-center">
-            <div className="w-4 h-4 bg-[#34D399] mr-2"></div>
+            <div className="w-4 h-4 bg-visa-free mr-2" />
             <span className="text-xs">Visa Not Required</span>
           </div>
           <div className="flex items-center">
-            <div className="w-4 h-4 bg-[#FBBF24] mr-2"></div>
+            <div className="w-4 h-4 bg-visa-arrival mr-2" />
             <span className="text-xs">Visa on Arrival</span>
           </div>
           <div className="flex items-center">
-            <div className="w-4 h-4 bg-[#60A5FA] mr-2"></div>
+            <div className="w-4 h-4 bg-visa-evisa mr-2" />
             <span className="text-xs">eVisa</span>
           </div>
           <div className="flex items-center">
-            <div className="w-4 h-4 bg-[#F87171] mr-2"></div>
+            <div className="w-4 h-4 bg-visa-required mr-2" />
             <span className="text-xs">Visa Required</span>
           </div>
           <div className="flex items-center">
-            <div className="w-4 h-4 bg-[#8B5CF6] mr-2"></div>
+            <div className="w-4 h-4 bg-visa-own mr-2" />
             <span className="text-xs">Home Country</span>
           </div>
         </div>
