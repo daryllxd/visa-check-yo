@@ -5,7 +5,7 @@ export interface Country {
   region: string;
   visaFree: string[];
   visaOnArrival?: string[];
-  eVisa?: string[];
+  e-visa?: string[];
   visaRequired?: string[];
 }
 

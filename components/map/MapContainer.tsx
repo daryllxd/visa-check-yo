@@ -14,7 +14,7 @@ interface MapContainerProps {
 const MapContainer = ({ geographies, visaRequirements }: MapContainerProps) => {
   return (
     <div className="relative h-full w-full">
-      <WorldMap geographies={geographies}>
+      <WorldMap geographies={geographies} visaRequirements={visaRequirements}>
         <Legend className="hidden lg:block absolute bottom-4 right-4 border border-gray-300 rounded-md p-2" />
       </WorldMap>
       <MapTooltip visaRequirements={visaRequirements} />

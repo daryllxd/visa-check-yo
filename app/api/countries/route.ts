@@ -3,8 +3,8 @@ import { NextResponse } from "next/server";
 // Define types for visa requirements
 export type VisaRequirementType =
   | "visa-required"
-  | "visa-not-required"
-  | "evisa"
+  | "visa-free"
+  | "e-visa"
   | "visa-on-arrival"
   | "own-country";
 
@@ -30,7 +30,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "al",
       name: "Albania",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
       notes:
         "Philippine passport holders with a valid, multiple-entry Schengen, U.S., or UK visa (previously used in the respective country) or valid residence permit in these areas can enter visa-free.",
     },
@@ -54,7 +54,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "ag",
       name: "Antigua and Barbuda",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
       notes:
         "Visa on arrival for Filipinos with valid visa or resident card from Canada, the United Kingdom, the United States, or a Schengen visa.",
     },
@@ -68,7 +68,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "am",
       name: "Armenia",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
       allowedStay: "120 days",
       notes:
         "Visa on arrival for holders of valid sticker visa or resident card issued by Australia, Canada, GCC countries, Japan, New Zealand, Russia, South Korea, EU or Schengen Area member states, UK, or the US.",
@@ -88,7 +88,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "az",
       name: "Azerbaijan",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
       notes:
         "Permanent Residents of Canada and the United States do not need a visa and may stay up to 30 days.",
     },
@@ -108,7 +108,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "bb",
       name: "Barbados",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "4 months",
     },
     {
@@ -126,19 +126,19 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "bj",
       name: "Benin",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
       allowedStay: "30 days",
       notes: "Must have an international vaccination certificate.",
     },
     {
       id: "bt",
       name: "Bhutan",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
     },
     {
       id: "bo",
       name: "Bolivia",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "90 days",
     },
     {
@@ -151,19 +151,19 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "bw",
       name: "Botswana",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
       allowedStay: "3 months",
     },
     {
       id: "br",
       name: "Brazil",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "90 days",
     },
     {
       id: "bn",
       name: "Brunei",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "14 days",
     },
     {
@@ -174,7 +174,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "bf",
       name: "Burkina Faso",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
     },
     {
       id: "bi",
@@ -185,7 +185,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "kh",
       name: "Cambodia",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "30 days",
     },
     {
@@ -210,7 +210,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "co",
       name: "Colombia",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "90 days",
       notes:
         "90 days on arrival, can extend another 90 days for 180 days total.",
@@ -218,14 +218,14 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "cr",
       name: "Costa Rica",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "90 days",
       notes: "30 days upon arrival, can extend for total of 90 days.",
     },
     {
       id: "hr",
       name: "Croatia",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "90 days",
     },
     {
@@ -255,24 +255,24 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "ec",
       name: "Ecuador",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "90 days",
     },
     {
       id: "eg",
       name: "Egypt",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
     },
     {
       id: "sv",
       name: "El Salvador",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "90 days",
     },
     {
       id: "fj",
       name: "Fiji",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "4 months",
     },
     {
@@ -298,30 +298,30 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "gt",
       name: "Guatemala",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
     },
     {
       id: "hn",
       name: "Honduras",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "90 days",
     },
     {
       id: "in",
       name: "India",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
       allowedStay: "60 days",
     },
     {
       id: "id",
       name: "Indonesia",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "30 days",
     },
     {
       id: "il",
       name: "Israel",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "3 months",
     },
     {
@@ -343,7 +343,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "my",
       name: "Malaysia",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "30 days",
     },
     {
@@ -356,7 +356,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "mn",
       name: "Mongolia",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "21 days",
     },
     {
@@ -369,7 +369,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       name: "Myanmar",
       visaRequirement: "visa-required",
       notes:
-        "eVisa available for 28 days. Travelers must arrive via Yangon, Nay Pyi Taw, or Mandalay airports.",
+        "e-visa available for 28 days. Travelers must arrive via Yangon, Nay Pyi Taw, or Mandalay airports.",
     },
     {
       id: "np",
@@ -385,7 +385,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "ni",
       name: "Nicaragua",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "90 days",
     },
     {
@@ -406,7 +406,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "om",
       name: "Oman",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
       allowedStay: "30 days",
     },
     {
@@ -417,7 +417,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "pa",
       name: "Panama",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "180 days",
     },
     {
@@ -428,13 +428,13 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "py",
       name: "Paraguay",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "90 days",
     },
     {
       id: "pe",
       name: "Peru",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "183 days",
     },
     {
@@ -456,7 +456,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "qa",
       name: "Qatar",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
     },
     {
       id: "ro",
@@ -471,7 +471,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "rw",
       name: "Rwanda",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
       allowedStay: "30 days",
     },
     {
@@ -482,7 +482,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "sn",
       name: "Senegal",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "90 days",
     },
     {
@@ -493,13 +493,13 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "sc",
       name: "Seychelles",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "3 months",
     },
     {
       id: "sg",
       name: "Singapore",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "30 days",
     },
     {
@@ -537,7 +537,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "lk",
       name: "Sri Lanka",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
       allowedStay: "30 days",
     },
     {
@@ -574,13 +574,13 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "th",
       name: "Thailand",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "30 days",
     },
     {
       id: "tr",
       name: "Turkey",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
       allowedStay: "30 days",
     },
     {
@@ -612,13 +612,13 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "uy",
       name: "Uruguay",
-      visaRequirement: "visa-not-required",
+      visaRequirement: "visa-free",
       allowedStay: "90 days",
     },
     {
       id: "uz",
       name: "Uzbekistan",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
       allowedStay: "30 days",
     },
     {
@@ -629,7 +629,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "vn",
       name: "Vietnam",
-      visaRequirement: "evisa",
+      visaRequirement: "visa-free",
       allowedStay: "30 days",
     },
     {
@@ -640,16 +640,16 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     {
       id: "zm",
       name: "Zambia",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
       allowedStay: "90 days",
     },
     {
       id: "zw",
       name: "Zimbabwe",
-      visaRequirement: "evisa",
+      visaRequirement: "e-visa",
       allowedStay: "3 months",
       notes:
-        "Filipinos can apply for an eVisa prior to arrival for tourism purposes. The eVisa is valid for 3 months from the date of issue and allows a stay of up to 3 months.",
+        "Filipinos can apply for an e-visa prior to arrival for tourism purposes. The e-visa is valid for 3 months from the date of issue and allows a stay of up to 3 months.",
     },
   ];
 
