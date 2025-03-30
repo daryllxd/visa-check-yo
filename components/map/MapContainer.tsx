@@ -2,6 +2,7 @@
 
 import { Country } from "@/app/api/countries/route";
 import WontFix from "@/types/wontfix";
+import { Legend } from "./Legend";
 import MapTooltip from "./MapTooltip";
 import WorldMap from "./WorldMap";
 
@@ -13,7 +14,9 @@ interface MapContainerProps {
 const MapContainer = ({ geographies, visaRequirements }: MapContainerProps) => {
   return (
     <div className="relative h-full w-full">
-      <WorldMap geographies={geographies} />
+      <WorldMap geographies={geographies}>
+        <Legend className="hidden lg:block absolute bottom-4 right-4 border border-gray-300 rounded-md p-2" />
+      </WorldMap>
       <MapTooltip visaRequirements={visaRequirements} />
     </div>
   );

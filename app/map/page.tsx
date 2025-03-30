@@ -1,3 +1,4 @@
+import { Legend } from "@/components/map/Legend";
 import MapContainer from "@/components/map/MapContainer";
 import {
   Card,
@@ -6,17 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import dynamic from "next/dynamic";
 import { headers } from "next/headers";
-
-// Import WorldMap with SSR disabled
-const WorldMap = dynamic(() => import("@/components/map/WorldMap"), {
-  loading: () => (
-    <div className="flex h-[500px] w-full items-center justify-center">
-      <p className="text-muted-foreground">Loading map visualization...</p>
-    </div>
-  ),
-});
 
 export default async function MapPage() {
   const geographies = await fetch(
@@ -41,10 +32,7 @@ export default async function MapPage() {
   }).then((res) => res.json());
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <h1 className="mb-8 text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-        Interactive World Map
-      </h1>
+    <div className="container mx-auto px-4 py-12 gap-4 grid">
       <Card className="overflow-hidden">
         <CardHeader>
           <CardTitle>Visa Requirements Visualization</CardTitle>
@@ -53,12 +41,18 @@ export default async function MapPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="p-0">
-          <div className="h-[600px] w-full">
+          <div className="h-full w-full">
             <MapContainer
               geographies={geographies}
               visaRequirements={visaRequirements.countries}
             />
           </div>
+        </CardContent>
+      </Card>
+
+      <Card className="lg:hidden">
+        <CardContent>
+          <Legend />
         </CardContent>
       </Card>
     </div>
