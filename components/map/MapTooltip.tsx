@@ -28,6 +28,10 @@ const MapTooltip = ({
         closeEvents={{
           mouseleave: !isCountryClicked,
         }}
+        globalCloseEvents={{
+          escape: true,
+          clickOutsideAnchor: true,
+        }}
         afterHide={() => {
           setIsCountryClicked(false);
         }}
@@ -45,7 +49,9 @@ const MapTooltip = ({
               <div className="text-2xl text-visa-required">
                 Status: {country.visaRequirement.replace(/-/g, " ")}
               </div>
-              <Link href={"/about"}>About page</Link>
+              <Link className="text-visa-free" href={"/about"}>
+                About page
+              </Link>
               {country.allowedStay && <div>Stay: {country.allowedStay}</div>}
               {country.notes && (
                 <div className="mt-1 text-xs opacity-80">{country.notes}</div>

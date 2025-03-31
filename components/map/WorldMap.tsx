@@ -88,7 +88,10 @@ const WorldMap = ({
                       default: {
                         outline: "none",
                       },
-                      hover: { outline: "none", fill: "#CBD5E1" },
+                      hover: {
+                        outline: "none",
+                        shadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
+                      },
                       pressed: { outline: "none" },
                     }}
                     data-tooltip-id="map-tooltip"
