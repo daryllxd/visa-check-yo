@@ -44,11 +44,15 @@ const getStatusColor = (status: string, country: string) => {
 interface WorldMapProps extends ComponentProps<"div"> {
   geographies: WontFix.NoNeedToCare;
   visaRequirements?: Country[];
+  isCountryClicked: boolean;
+  setIsCountryClicked: (isCountryClicked: boolean) => void;
 }
 
 const WorldMap = ({
   geographies,
   visaRequirements,
+  isCountryClicked,
+  setIsCountryClicked,
   ...props
 }: WorldMapProps) => {
   return (
@@ -88,8 +92,11 @@ const WorldMap = ({
                       pressed: { outline: "none" },
                     }}
                     data-tooltip-id="map-tooltip"
-                    data-tooltip-float="true"
+                    data-tooltip-float={!isCountryClicked}
                     data-tooltip-content={geo.properties.name}
+                    onClick={() => {
+                      setIsCountryClicked(true);
+                    }}
                   />
                 );
               })
