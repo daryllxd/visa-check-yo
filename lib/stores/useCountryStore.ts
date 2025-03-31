@@ -23,7 +23,7 @@ export const useCountryStore = create<CountryState>((set, get) => ({
     return get().countries.find((country) => country.id === id);
   },
 
-  updateEnhancedCountries: (selectedVisaIds) => {
+  updateEnhancedCountries: (selectedVisaIds: string[]) => {
     const { countries } = get();
 
     if (selectedVisaIds.length === 0) {
@@ -32,46 +32,35 @@ export const useCountryStore = create<CountryState>((set, get) => ({
     }
 
     const enhancedCountries = countries.map((country) => {
-      // Check if country notes mention access with any of the selected visas
       const hasVisaAccess = selectedVisaIds.some((visaId) => {
-        if (!country.notes) return false;
-
-        const lowerNotes = country.notes.toLowerCase();
-
         switch (visaId) {
           case "has-us-visa":
           case "has-us-visa-unused":
-            return (
-              lowerNotes.includes("u.s") ||
-              lowerNotes.includes("us ") ||
-              lowerNotes.includes("united states")
-            );
-          case "has-uk-visa":
-            return (
-              lowerNotes.includes("uk ") ||
-              lowerNotes.includes("united kingdom")
-            );
+            return country.tags?.includes("has-us-visa");
           case "has-schengen-visa":
-            return lowerNotes.includes("schengen");
+            return country.tags?.includes("has-schengen-visa");
+          case "has-uk-visa":
+            return country.tags?.includes("has-uk-visa");
           case "has-japan-visa":
-            return lowerNotes.includes("japan");
+            return country.tags?.includes("has-japan-visa");
           case "has-korea-visa":
-            return lowerNotes.includes("korea");
+            return country.tags?.includes("has-korea-visa");
           case "has-apec-card":
-            return lowerNotes.includes("apec");
+            return country.tags?.includes("has-apec-card");
           default:
             return false;
         }
       });
 
       // If the country allows access with one of the selected visas, update its status
-      if (hasVisaAccess && country.visaRequirement === "visa-required") {
+      if (hasVisaAccess) {
         // Create a copy with modified visa requirement
         return {
           ...country,
           visaRequirement: "visa-free" as const,
           allowedStay: country.allowedStay || "Check details",
           notes: `${country.notes} (Access with your selected visa)`,
+          tags: country.tags,
         };
       }
 

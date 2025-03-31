@@ -201,6 +201,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       visaRequirement: "visa-required",
       notes:
         "Filipinos who have held a Canadian visa in the last 10 years or who hold a valid U.S. non-immigrant visa can obtain an eTA instead of a visa when traveling to Canada by air.",
+      tags: ["has-us-visa"],
     },
     {
       id: "cl",
@@ -354,12 +355,15 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "jp",
       name: "Japan",
       visaRequirement: "visa-required",
+      tags: ["has-japan-visa"],
     },
     {
       id: "ke",
       name: "Kenya",
       visaRequirement: "visa-on-arrival",
       allowedStay: "90 days",
+      notes:
+        "Visa free transit (up to 30 days) provided holding a valid U.S., Canada, Australia, New Zealand visa, and arriving from or departing to those countries.",
     },
     {
       id: "my",
@@ -373,7 +377,12 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       visaRequirement: "visa-required",
       notes:
         "Filipinos with a valid multiple-entry visa issued by the Schengen countries, Canada, Japan, the UK, or the U.S. can travel visa-free.",
-      tags: ["has-us-visa"],
+      tags: [
+        "has-us-visa",
+        "has-schengen-visa",
+        "has-uk-visa",
+        "has-japan-visa",
+      ],
     },
     {
       id: "mn",
@@ -558,8 +567,9 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "kr",
       name: "South Korea",
       visaRequirement: "visa-required",
+      tags: ["has-korea-visa"],
       notes:
-        "Visa-free transit (up to 30 days) for travelers holding valid U.S., Canada, Australia, or New Zealand visas. Visa-free for 30 days to Jeju Island.",
+        "- Visa free transit (up to 30 days) provided holding a valid U.S., Canada, Australia, New Zealand visa, and arriving from or departing to those countries.  -  Visa-free access for 30 days to Jeju Island.  - Group tourists from the Philippines can travel visa-free through Yangyang International Airport until May 2024. - Group tourists can only travel to the Gangwon-do region and the metropolitan area of South Korea, and the maximum stay is 15 days.",
     },
     {
       id: "es",
