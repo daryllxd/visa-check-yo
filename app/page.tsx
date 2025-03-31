@@ -1,109 +1,63 @@
-import Link from "next/link";
-
-import { Button } from "@/components/ui/button";
+import { Legend } from "@/components/map/Legend";
+import MapContainer from "@/components/map/MapContainer";
+import VisaTags from "@/components/map/VisaTags";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { headers } from "next/headers";
 
-export default async function Home() {
-  const headersList = await headers();
-  const currentPath = headersList.get("host");
+export default async function MapPage() {
+  const geographies = await fetch(
+    "https://unpkg.com/world-atlas@2.0.2/countries-110m.json",
+    {
+      next: {
+        revalidate: 60 * 60 * 24,
+      },
+    },
+  ).then((res) => res.json());
+
+  const host = await headers().then((headers) => headers.get("host"));
+  const protocol = process.env.HTTPS === "true" ? "https" : "https";
+
+  const start = Date.now();
+
+  // todo - check why this takes so long to load
+  const visaRequirements = await fetch(`${protocol}://${host}/api/countries`, {
+    next: {
+      revalidate: 60 * 60 * 24,
+    },
+  }).then((res) => res.json());
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <section className="py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
-                {currentPath?.includes("visa-check.local")
-                  ? "Check Where You Can Travel"
-                  : "Check Visa Requirements"}
-              </h1>
-              <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                Discover which countries you can visit based on your nationality
-                and visas.
-              </p>
-            </div>
-            <div className="space-x-4">
-              <Button asChild>
-                <Link href="#">Get Started</Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link href="/about">Learn More</Link>
-              </Button>
-            </div>
+    <div className="container mx-auto px-4 py-12 gap-4 grid">
+      <Card className="overflow-hidden">
+        <CardHeader>
+          <CardTitle>Visa Requirements Visualization</CardTitle>
+          <CardDescription>
+            Hover to see requirements for each country. Click on a country to
+            access links in the tooltip. Click outside the tooltip to close it.
+          </CardDescription>
+          <VisaTags className="mt-4" />
+        </CardHeader>
+        <CardContent className="p-0">
+          <div className="h-full w-full">
+            <MapContainer
+              geographies={geographies}
+              visaRequirements={visaRequirements.countries}
+            />
           </div>
-        </div>
-      </section>
+        </CardContent>
+      </Card>
 
-      <section className="bg-muted/50 py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
-            <Card>
-              <CardHeader>
-                <CardTitle>Check Visa Requirements</CardTitle>
-                <CardDescription>
-                  See which countries you can visit visa-free
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-sm">
-                  Enter your nationality and see which countries you can visit
-                  without a visa or with visa-on-arrival.
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Button variant="outline" size="sm" className="w-full">
-                  Coming Soon
-                </Button>
-              </CardFooter>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Map Visualization</CardTitle>
-                <CardDescription>
-                  Interactive world map to explore options
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-sm">
-                  Visualize all countries you can visit on an interactive world
-                  map with color coding based on access type.
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Button variant="outline" size="sm" className="w-full">
-                  Coming Soon
-                </Button>
-              </CardFooter>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Travel Planning</CardTitle>
-                <CardDescription>Plan your international trips</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-sm">
-                  Create and save travel routes based on your visa eligibility
-                  and plan trips accordingly.
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Button variant="outline" size="sm" className="w-full">
-                  Coming Soon
-                </Button>
-              </CardFooter>
-            </Card>
-          </div>
-        </div>
-      </section>
+      <Card className="lg:hidden">
+        <CardContent>
+          <Legend />
+        </CardContent>
+      </Card>
     </div>
   );
 }

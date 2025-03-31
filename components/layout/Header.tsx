@@ -1,7 +1,5 @@
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
-
 export function Header() {
   return (
     <header className="border-b">
@@ -19,12 +17,6 @@ export function Header() {
             Home
           </Link>
           <Link
-            href="/map"
-            className="text-sm font-medium transition-colors hover:text-primary"
-          >
-            Map
-          </Link>
-          <Link
             href="/about"
             className="text-sm font-medium transition-colors hover:text-primary"
           >
@@ -37,11 +29,6 @@ export function Header() {
             Contact
           </Link>
         </nav>
-        <div className="flex items-center space-x-4">
-          <Button variant="outline" size="sm">
-            Get Started
-          </Button>
-        </div>
       </div>
     </header>
   );
