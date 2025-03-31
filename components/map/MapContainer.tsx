@@ -9,10 +9,13 @@ import WorldMap from "./WorldMap";
 
 interface MapContainerProps {
   geographies: WontFix.NoNeedToCare;
-  visaRequirements: Country[];
+  countriesWithVisaRequirements: Country[];
 }
 
-const MapContainer = ({ geographies, visaRequirements }: MapContainerProps) => {
+const MapContainer = ({
+  geographies,
+  countriesWithVisaRequirements: visaRequirements,
+}: MapContainerProps) => {
   const [isCountryClicked, setIsCountryClicked] = useState(false);
 
   return (

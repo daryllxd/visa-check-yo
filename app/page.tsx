@@ -26,11 +26,14 @@ export default async function MapPage() {
   const start = Date.now();
 
   // todo - check why this takes so long to load
-  const visaRequirements = await fetch(`${protocol}://${host}/api/countries`, {
-    next: {
-      revalidate: 60 * 60 * 24,
+  const countriesWithVisaRequirements = await fetch(
+    `${protocol}://${host}/api/countries`,
+    {
+      next: {
+        revalidate: 60 * 60 * 24,
+      },
     },
-  }).then((res) => res.json());
+  ).then((res) => res.json());
 
   return (
     <div className="container mx-auto px-4 py-12 gap-4 grid">
@@ -47,7 +50,9 @@ export default async function MapPage() {
           <div className="h-full w-full">
             <MapContainer
               geographies={geographies}
-              visaRequirements={visaRequirements.countries}
+              countriesWithVisaRequirements={
+                countriesWithVisaRequirements.countries
+              }
             />
           </div>
         </CardContent>
