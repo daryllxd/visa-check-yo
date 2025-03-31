@@ -1,29 +1,26 @@
 "use client";
 
 import { Tag } from "@/components/ui/tag";
-import { useState } from "react";
-
-const defaultVisaOptions: { id: string; label: string; selected: boolean }[] = [
-  { id: "has-us-visa", label: "🇺🇸 US Visa", selected: false },
-  { id: "has-us-visa-unused", label: "🇺🇸 US Visa (unused)", selected: false },
-  { id: "has-uk-visa", label: "🇬🇧 UK Visa", selected: false },
-  { id: "has-schengen-visa", label: "🇪🇺 Schengen Visa", selected: false },
-  { id: "has-japan-visa", label: "🇯🇵 Japan Visa", selected: false },
-  { id: "has-korea-visa", label: "🇰🇷 S. Korea Visa", selected: false },
-  {
-    id: "has-apec-card",
-    label: "🇦🇺 APEC Card",
-    selected: false,
-  },
-];
+import { useCountryStore } from "@/lib/stores/useCountryStore";
+import { useVisaStore } from "@/lib/stores/useVisaStore";
+import { useEffect } from "react";
 
 interface VisaTagsProps {
   className?: string;
 }
 
 const VisaTags = ({ className }: VisaTagsProps) => {
-  const [visaOptions, setVisaOptions] =
-    useState<typeof defaultVisaOptions>(defaultVisaOptions);
+  const { visaOptions, toggleVisa } = useVisaStore();
+  const { updateEnhancedCountries } = useCountryStore();
+
+  // Update enhanced countries whenever visa selection changes
+  useEffect(() => {
+    const selectedVisaIds = visaOptions
+      .filter((visa) => visa.selected)
+      .map((visa) => visa.id);
+
+    updateEnhancedCountries(selectedVisaIds);
+  }, [visaOptions, updateEnhancedCountries]);
 
   return (
     <div className={`flex flex-wrap gap-2 items-center ${className}`}>
@@ -33,15 +30,7 @@ const VisaTags = ({ className }: VisaTagsProps) => {
           key={visa.id}
           id={visa.id}
           selected={visa.selected}
-          onClick={() =>
-            setVisaOptions(
-              visaOptions.map((option) =>
-                option.id === visa.id
-                  ? { ...option, selected: !option.selected }
-                  : option,
-              ),
-            )
-          }
+          onClick={() => toggleVisa(visa.id)}
         >
           {visa.label}
         </Tag>

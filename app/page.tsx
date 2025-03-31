@@ -1,3 +1,4 @@
+import { InitializeStores } from "@/components/InitializeStores";
 import { Legend } from "@/components/map/Legend";
 import MapContainer from "@/components/map/MapContainer";
 import VisaTags from "@/components/map/VisaTags";
@@ -20,7 +21,7 @@ export default async function MapPage() {
     },
   ).then((res) => res.json());
 
-  const host = await headers().then((headers) => headers.get("host"));
+  const host = headers().get("host");
   const protocol = process.env.HTTPS === "true" ? "https" : "https";
 
   const start = Date.now();
@@ -37,6 +38,7 @@ export default async function MapPage() {
 
   return (
     <div className="container mx-auto px-4 py-12 gap-4 grid">
+      <InitializeStores countries={countriesWithVisaRequirements.countries} />
       <Card className="overflow-hidden">
         <CardHeader>
           <CardTitle>Visa Requirements Visualization</CardTitle>
