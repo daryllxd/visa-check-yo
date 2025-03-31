@@ -15,6 +15,7 @@ export interface Country {
   visaRequirement: VisaRequirementType;
   allowedStay?: string;
   notes?: string;
+  tags?: string[];
 }
 
 export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
@@ -26,6 +27,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       visaRequirement: "visa-required",
       notes:
         "Women of all nationalities must cover their body with clothing, except for their face, hands, and feet.",
+      tags: [],
     },
     {
       id: "al",
@@ -33,11 +35,13 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       visaRequirement: "e-visa",
       notes:
         "Philippine passport holders with a valid, multiple-entry Schengen, U.S., or UK visa (previously used in the respective country) or valid residence permit in these areas can enter visa-free.",
+      tags: ["has-us-visa"],
     },
     {
       id: "dz",
       name: "Algeria",
       visaRequirement: "visa-required",
+      tags: [],
     },
     {
       id: "ad",
@@ -84,6 +88,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "at",
       name: "Austria",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "az",
@@ -115,6 +120,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "be",
       name: "Belgium",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "bz",
@@ -122,6 +128,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       visaRequirement: "visa-required",
       notes:
         "Individuals with valid U.S. or Schengen Treaty Visas in their passports, as well as individuals with valid U.S. and Canada residency, do not require a visa to travel to Belize.",
+      tags: ["has-us-visa"],
     },
     {
       id: "bj",
@@ -239,11 +246,13 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "cz",
       name: "Czech Republic",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "dk",
       name: "Denmark",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "do",
@@ -251,6 +260,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       visaRequirement: "visa-required",
       notes:
         "Residents of the U.S., Canada, and the EU (including the UK) do not need a visa for up to 30 days with a valid passport.",
+      tags: ["has-us-visa"],
     },
     {
       id: "ec",
@@ -279,21 +289,25 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "fi",
       name: "Finland",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "fr",
       name: "France",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "de",
       name: "Germany",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "gr",
       name: "Greece",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "gt",
@@ -334,6 +348,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "it",
       name: "Italy",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "jp",
@@ -358,6 +373,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       visaRequirement: "visa-required",
       notes:
         "Filipinos with a valid multiple-entry visa issued by the Schengen countries, Canada, Japan, the UK, or the U.S. can travel visa-free.",
+      tags: ["has-us-visa"],
     },
     {
       id: "mn",
@@ -388,12 +404,14 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "nl",
       name: "Netherlands",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "ni",
       name: "Nicaragua",
       visaRequirement: "visa-free",
       allowedStay: "90 days",
+      tags: ["has-us-visa"],
     },
     {
       id: "ne",
@@ -409,6 +427,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "no",
       name: "Norway",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "om",
@@ -426,6 +445,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       name: "Panama",
       visaRequirement: "visa-free",
       allowedStay: "180 days",
+      tags: ["has-us-visa"],
     },
     {
       id: "pg",
@@ -454,11 +474,13 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "pl",
       name: "Poland",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "pt",
       name: "Portugal",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "qa",
@@ -496,6 +518,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "rs",
       name: "Serbia",
       visaRequirement: "visa-required",
+      tags: ["has-us-visa"],
     },
     {
       id: "sc",
@@ -513,11 +536,13 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "sk",
       name: "Slovakia",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "si",
       name: "Slovenia",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "so",
@@ -540,6 +565,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "es",
       name: "Spain",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "lk",
@@ -556,11 +582,13 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "se",
       name: "Sweden",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "ch",
       name: "Switzerland",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "sy",
@@ -589,6 +617,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       name: "Turkey",
       visaRequirement: "e-visa",
       allowedStay: "30 days",
+      tags: ["has-us-visa", "has-schengen-visa"],
     },
     {
       id: "ug",
@@ -615,6 +644,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "us",
       name: "United States",
       visaRequirement: "visa-required",
+      tags: ["has-us-visa"],
     },
     {
       id: "uy",
@@ -800,6 +830,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "me",
       name: "Montenegro",
       visaRequirement: "visa-required",
+      tags: ["has-us-visa"],
     },
     {
       id: "cx",
@@ -1005,6 +1036,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "me",
       name: "Montenegro",
       visaRequirement: "visa-required",
+      tags: ["has-us-visa"],
     },
     {
       id: "cx",
@@ -1044,6 +1076,7 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       visaRequirement: "visa-required",
       notes:
         "Residents of the U.S., Canada, and the EU (including the UK) do not need a visa for up to 30 days with a valid passport.",
+      tags: ["has-us-visa"],
     },
     {
       id: "bs",
@@ -1167,26 +1200,31 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "hu",
       name: "Hungary",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "lt",
       name: "Lithuania",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "lv",
       name: "Latvia",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "ee",
       name: "Estonia",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "lu",
       name: "Luxembourg",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "nz",
@@ -1197,11 +1235,13 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
       id: "is",
       name: "Iceland",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "cz",
       name: "Czechia",
       visaRequirement: "visa-required",
+      tags: ["has-schengen-visa"],
     },
     {
       id: "aq",
@@ -1225,5 +1265,13 @@ export async function GET(): Promise<NextResponse<{ countries: Country[] }>> {
     },
   ];
 
-  return NextResponse.json({ countries });
+  // Initialize empty tags array for all countries that don't have tags specified
+  const countriesWithTags = countries.map((country) => {
+    if (!country.tags) {
+      return { ...country, tags: [] };
+    }
+    return country;
+  });
+
+  return NextResponse.json({ countries: countriesWithTags });
 }
