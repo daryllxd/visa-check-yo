@@ -21,10 +21,9 @@ export default async function MapPage() {
     },
   ).then((res) => res.json());
 
-  const host = headers().get("host");
-  const protocol = process.env.HTTPS === "true" ? "https" : "https";
-
-  const start = Date.now();
+  const headersList = await headers();
+  const host = headersList.get("host");
+  const protocol = headersList.get("x-forwarded-proto") || "http";
 
   // todo - check why this takes so long to load
   const countriesWithVisaRequirements = await fetch(
