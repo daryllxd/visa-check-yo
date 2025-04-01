@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 export type VisaOption = {
   id: string;
@@ -26,16 +27,24 @@ const defaultVisaOptions: VisaOption[] = [
   },
 ];
 
-export const useVisaStore = create<VisaState>((set) => ({
-  visaOptions: defaultVisaOptions,
-  toggleVisa: (id) =>
-    set((state) => ({
-      visaOptions: state.visaOptions.map((visa) =>
-        visa.id === id ? { ...visa, selected: !visa.selected } : visa,
-      ),
-    })),
-  resetVisas: () =>
-    set(() => ({
+export const useVisaStore = create<VisaState>()(
+  persist(
+    (set) => ({
       visaOptions: defaultVisaOptions,
-    })),
-}));
+      toggleVisa: (id) =>
+        set((state) => ({
+          visaOptions: state.visaOptions.map((visa) =>
+            visa.id === id ? { ...visa, selected: !visa.selected } : visa,
+          ),
+        })),
+      resetVisas: () =>
+        set(() => ({
+          visaOptions: defaultVisaOptions,
+        })),
+    }),
+    {
+      name: "visa-store",
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
+);
