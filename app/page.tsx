@@ -49,12 +49,7 @@ export default async function MapPage() {
         </CardHeader>
         <CardContent className="p-0">
           <div className="h-full w-full">
-            <MapContainer
-              geographies={geographies}
-              countriesWithVisaRequirements={
-                countriesWithVisaRequirements.countries
-              }
-            />
+            <MapContainer geographies={geographies} />
           </div>
         </CardContent>
       </Card>

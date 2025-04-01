@@ -5,17 +5,15 @@ export interface Country {
   region: string;
   visaFree: string[];
   visaOnArrival?: string[];
-  e-visa?: string[];
-  visaRequired?: string[];
 }
 
 // Visa types
 export enum VisaType {
-  VISA_FREE = 'VISA_FREE',
-  VISA_ON_ARRIVAL = 'VISA_ON_ARRIVAL',
-  E_VISA = 'E_VISA',
-  VISA_REQUIRED = 'VISA_REQUIRED',
-  NOT_ALLOWED = 'NOT_ALLOWED',
+  VISA_FREE = "VISA_FREE",
+  VISA_ON_ARRIVAL = "VISA_ON_ARRIVAL",
+  E_VISA = "E_VISA",
+  VISA_REQUIRED = "VISA_REQUIRED",
+  NOT_ALLOWED = "NOT_ALLOWED",
 }
 
 export interface VisaRequirement {

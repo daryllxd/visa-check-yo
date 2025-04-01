@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -6,7 +6,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+} from "@/components/ui/card";
 
 export default function ContactPage() {
   return (
@@ -18,8 +18,8 @@ export default function ContactPage() {
           <CardHeader>
             <CardTitle>Get in Touch</CardTitle>
             <CardDescription>
-              We'd love to hear from you! Fill out the form below and we'll respond as soon as
-              possible.
+              We'd love to hear from you! Fill out the form below and we'll
+              respond as soon as possible.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -89,17 +89,28 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
             <h2 className="mb-3 text-xl font-semibold">Email</h2>
-            <p className="text-muted-foreground mb-6">info@visacheck.example.com</p>
+            <p className="text-muted-foreground mb-6">
+              info@visacheck.example.com
+            </p>
 
             <h2 className="mb-3 text-xl font-semibold">Follow Us</h2>
             <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-foreground">
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-foreground"
+              >
                 Twitter
               </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground">
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-foreground"
+              >
                 Facebook
               </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground">
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-foreground"
+              >
                 Instagram
               </a>
             </div>

@@ -12,17 +12,6 @@ import {
 } from "react-simple-maps";
 
 // Sample data - mapping country code to visa status
-const countryStatus: Record<string, string> = {
-  "United States of America": "visa-required",
-  Canada: "visa-free",
-  GBR: "visa-on-arrival",
-  FRA: "visa-free",
-  JPN: "e-visa",
-  AUS: "visa-required",
-  Philippines: "own-country",
-  // Add more countries as needed
-};
-
 const getStatusColor = (status: string, country: string) => {
   switch (status) {
     case "visa-free":
@@ -68,8 +57,7 @@ const WorldMap = ({
         <ZoomableGroup>
           <Geographies geography={geographies}>
             {({ geographies }: { geographies: WontFix.NoNeedToCare }) =>
-              geographies.map((geo: any) => {
-                const status = countryStatus[geo.id] || "unknown";
+              geographies.map((geo: WontFix.NoNeedToCare) => {
                 return (
                   <Geography
                     key={geo.rsmKey}
