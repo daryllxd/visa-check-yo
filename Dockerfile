@@ -2,7 +2,8 @@
 FROM node:20-alpine AS deps
 WORKDIR /app
 
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Use 10.10.0 as it is the latest version today
+RUN corepack enable && corepack prepare pnpm@10.10.0 --activate
 
 COPY package.json pnpm-lock.yaml ./
 
