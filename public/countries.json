@@ -1,0 +1,1401 @@
+{
+  "countries": [
+    {
+      "id": "af",
+      "name": "Afghanistan",
+      "visaRequirement": "visa-required",
+      "notes": "Women of all nationalities must cover their body with clothing, except for their face, hands, and feet.",
+      "tags": []
+    },
+    {
+      "id": "al",
+      "name": "Albania",
+      "visaRequirement": "e-visa",
+      "notes": "Philippine passport holders with a valid, multiple-entry Schengen, U.S., or UK visa (previously used in the respective country) or valid residence permit in these areas can enter visa-free.",
+      "tags": ["has-us-visa"]
+    },
+    {
+      "id": "dz",
+      "name": "Algeria",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ad",
+      "name": "Andorra",
+      "visaRequirement": "visa-required",
+      "notes": "No visa requirements for entry into Andorra, but access is through France or Spain. A multiple-entry visa is required to re-enter either France or Spain when leaving Andorra. All visitors can stay for 3 months.",
+      "tags": []
+    },
+    {
+      "id": "ao",
+      "name": "Angola",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ag",
+      "name": "Antigua and Barbuda",
+      "visaRequirement": "e-visa",
+      "notes": "Visa on arrival for Filipinos with valid visa or resident card from Canada, the United Kingdom, the United States, or a Schengen visa.",
+      "tags": []
+    },
+    {
+      "id": "ar",
+      "name": "Argentina",
+      "visaRequirement": "visa-required",
+      "notes": "Those with valid B2 or B1/B2 visa issued by the U.S. are eligible to apply for Electronic Travel Authorization (eTA) prior to arrival.",
+      "tags": []
+    },
+    {
+      "id": "am",
+      "name": "Armenia",
+      "visaRequirement": "e-visa",
+      "allowedStay": "120 days",
+      "notes": "Visa on arrival for holders of valid sticker visa or resident card issued by Australia, Canada, GCC countries, Japan, New Zealand, Russia, South Korea, EU or Schengen Area member states, UK, or the US.",
+      "tags": []
+    },
+    {
+      "id": "au",
+      "name": "Australia",
+      "visaRequirement": "visa-required",
+      "notes": "May apply online (Online Visitor e600 visa). Transit visa is not required.",
+      "tags": []
+    },
+    {
+      "id": "at",
+      "name": "Austria",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "az",
+      "name": "Azerbaijan",
+      "visaRequirement": "e-visa",
+      "notes": "Permanent Residents of Canada and the United States do not need a visa and may stay up to 30 days.",
+      "tags": []
+    },
+    {
+      "id": "bh",
+      "name": "Bahrain",
+      "visaRequirement": "visa-on-arrival",
+      "allowedStay": "14 days",
+      "notes": "Filipinos with existing Saudi Iqama (valid for at least 3 months) and Saudi Exit-ReEntry visa can enter Bahrain visa-free via King Fahad Causeway Bridge.",
+      "tags": []
+    },
+    {
+      "id": "bd",
+      "name": "Bangladesh",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "bb",
+      "name": "Barbados",
+      "visaRequirement": "visa-free",
+      "allowedStay": "4 months",
+      "tags": []
+    },
+    {
+      "id": "be",
+      "name": "Belgium",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "bz",
+      "name": "Belize",
+      "visaRequirement": "visa-required",
+      "notes": "Individuals with valid U.S. or Schengen Treaty Visas in their passports, as well as individuals with valid U.S. and Canada residency, do not require a visa to travel to Belize.",
+      "tags": ["has-us-visa"]
+    },
+    {
+      "id": "bj",
+      "name": "Benin",
+      "visaRequirement": "e-visa",
+      "allowedStay": "30 days",
+      "notes": "Must have an international vaccination certificate.",
+      "tags": []
+    },
+    {
+      "id": "bt",
+      "name": "Bhutan",
+      "visaRequirement": "e-visa",
+      "tags": []
+    },
+    {
+      "id": "bo",
+      "name": "Bolivia",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "ba",
+      "name": "Bosnia and Herzegovina",
+      "visaRequirement": "visa-required",
+      "notes": "Visa-free for up to 30 days for valid UK or Schengen visa holders.",
+      "tags": []
+    },
+    {
+      "id": "bw",
+      "name": "Botswana",
+      "visaRequirement": "e-visa",
+      "allowedStay": "3 months",
+      "tags": []
+    },
+    {
+      "id": "br",
+      "name": "Brazil",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "bn",
+      "name": "Brunei",
+      "visaRequirement": "visa-free",
+      "allowedStay": "14 days",
+      "tags": []
+    },
+    {
+      "id": "bg",
+      "name": "Bulgaria",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "bf",
+      "name": "Burkina Faso",
+      "visaRequirement": "e-visa",
+      "tags": []
+    },
+    {
+      "id": "bi",
+      "name": "Burundi",
+      "visaRequirement": "visa-on-arrival",
+      "allowedStay": "1 month",
+      "tags": []
+    },
+    {
+      "id": "kh",
+      "name": "Cambodia",
+      "visaRequirement": "visa-free",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "ca",
+      "name": "Canada",
+      "visaRequirement": "visa-required",
+      "notes": "Filipinos who have held a Canadian visa in the last 10 years or who hold a valid U.S. non-immigrant visa can obtain an eTA instead of a visa when traveling to Canada by air.",
+      "tags": ["has-us-visa"]
+    },
+    {
+      "id": "cl",
+      "name": "Chile",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "cn",
+      "name": "China",
+      "visaRequirement": "visa-required",
+      "notes": "Filipino citizens may travel without a visa to Hainan. - Visa on arrival for Shenzhen, provided that they have a previously issued Chinese visa, whether valid or expired. - 24-hour visa-free transit through any international airports of China, allows domestic travel through different airports.",
+      "tags": []
+    },
+    {
+      "id": "co",
+      "name": "Colombia",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "notes": "90 days on arrival, can extend another 90 days for 180 days total.",
+      "tags": []
+    },
+    {
+      "id": "cr",
+      "name": "Costa Rica",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "notes": "30 days upon arrival, can extend for total of 90 days.",
+      "tags": []
+    },
+    {
+      "id": "hr",
+      "name": "Croatia",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "cu",
+      "name": "Cuba",
+      "visaRequirement": "visa-required",
+      "notes": "Travel allowed with a tourist card and a valid visa or permanent residence permit issued by Canada, the U.S., or an EU member state.",
+      "tags": []
+    },
+    {
+      "id": "cz",
+      "name": "Czech Republic",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "dk",
+      "name": "Denmark",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "do",
+      "name": "Dominican Republic",
+      "visaRequirement": "visa-required",
+      "notes": "Residents of the U.S., Canada, and the EU (including the UK) do not need a visa for up to 30 days with a valid passport.",
+      "tags": ["has-us-visa"]
+    },
+    {
+      "id": "ec",
+      "name": "Ecuador",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "eg",
+      "name": "Egypt",
+      "visaRequirement": "e-visa",
+      "tags": []
+    },
+    {
+      "id": "sv",
+      "name": "El Salvador",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "fj",
+      "name": "Fiji",
+      "visaRequirement": "visa-free",
+      "allowedStay": "4 months",
+      "tags": []
+    },
+    {
+      "id": "fi",
+      "name": "Finland",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "fr",
+      "name": "France",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "de",
+      "name": "Germany",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "gr",
+      "name": "Greece",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "gt",
+      "name": "Guatemala",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "hn",
+      "name": "Honduras",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "in",
+      "name": "India",
+      "visaRequirement": "e-visa",
+      "allowedStay": "60 days",
+      "tags": []
+    },
+    {
+      "id": "id",
+      "name": "Indonesia",
+      "visaRequirement": "visa-free",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "ir",
+      "name": "Iran",
+      "visaRequirement": "e-visa",
+      "tags": []
+    },
+    {
+      "id": "il",
+      "name": "Israel",
+      "visaRequirement": "visa-free",
+      "allowedStay": "3 months",
+      "tags": []
+    },
+    {
+      "id": "it",
+      "name": "Italy",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "jp",
+      "name": "Japan",
+      "visaRequirement": "visa-required",
+      "tags": ["has-japan-visa"]
+    },
+    {
+      "id": "ke",
+      "name": "Kenya",
+      "visaRequirement": "visa-on-arrival",
+      "allowedStay": "90 days",
+      "notes": "Visa free transit (up to 30 days) provided holding a valid U.S., Canada, Australia, New Zealand visa, and arriving from or departing to those countries.",
+      "tags": []
+    },
+    {
+      "id": "my",
+      "name": "Malaysia",
+      "visaRequirement": "visa-free",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "mx",
+      "name": "Mexico",
+      "visaRequirement": "visa-required",
+      "notes": "Filipinos with a valid multiple-entry visa issued by the Schengen countries, Canada, Japan, the UK, or the U.S. can travel visa-free.",
+      "tags": ["has-us-visa", "has-schengen-visa", "has-uk-visa", "has-japan-visa"]
+    },
+    {
+      "id": "mn",
+      "name": "Mongolia",
+      "visaRequirement": "visa-free",
+      "allowedStay": "21 days",
+      "tags": []
+    },
+    {
+      "id": "ma",
+      "name": "Morocco",
+      "visaRequirement": "visa-free",
+      "tags": []
+    },
+    {
+      "id": "mm",
+      "name": "Myanmar",
+      "visaRequirement": "visa-free",
+      "allowedStay": "14 days",
+      "notes": "e-visa available for 28 days. Travelers must arrive via Yangon, Nay Pyi Taw, or Mandalay airports.",
+      "tags": []
+    },
+    {
+      "id": "np",
+      "name": "Nepal",
+      "visaRequirement": "visa-on-arrival",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "nl",
+      "name": "Netherlands",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "ni",
+      "name": "Nicaragua",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": ["has-us-visa"]
+    },
+    {
+      "id": "ne",
+      "name": "Niger",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ng",
+      "name": "Nigeria",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "no",
+      "name": "Norway",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "om",
+      "name": "Oman",
+      "visaRequirement": "e-visa",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "pk",
+      "name": "Pakistan",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "pa",
+      "name": "Panama",
+      "visaRequirement": "visa-free",
+      "allowedStay": "180 days",
+      "tags": ["has-us-visa"]
+    },
+    {
+      "id": "pg",
+      "name": "Papua New Guinea",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "py",
+      "name": "Paraguay",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "pe",
+      "name": "Peru",
+      "visaRequirement": "visa-free",
+      "allowedStay": "183 days",
+      "tags": []
+    },
+    {
+      "id": "ph",
+      "name": "Philippines",
+      "visaRequirement": "own-country",
+      "notes": "Home country.",
+      "tags": []
+    },
+    {
+      "id": "pl",
+      "name": "Poland",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "pt",
+      "name": "Portugal",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "qa",
+      "name": "Qatar",
+      "visaRequirement": "e-visa",
+      "tags": []
+    },
+    {
+      "id": "ro",
+      "name": "Romania",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ru",
+      "name": "Russia",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "rw",
+      "name": "Rwanda",
+      "visaRequirement": "e-visa",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "sa",
+      "name": "Saudi Arabia",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "sn",
+      "name": "Senegal",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "rs",
+      "name": "Serbia",
+      "visaRequirement": "visa-required",
+      "tags": ["has-us-visa"]
+    },
+    {
+      "id": "sc",
+      "name": "Seychelles",
+      "visaRequirement": "visa-free",
+      "allowedStay": "3 months",
+      "tags": []
+    },
+    {
+      "id": "sg",
+      "name": "Singapore",
+      "visaRequirement": "visa-free",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "sk",
+      "name": "Slovakia",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "si",
+      "name": "Slovenia",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "so",
+      "name": "Somalia",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "za",
+      "name": "South Africa",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "kr",
+      "name": "South Korea",
+      "visaRequirement": "visa-required",
+      "tags": ["has-korea-visa"],
+      "notes": "- Visa free transit (up to 30 days) provided holding a valid U.S., Canada, Australia, New Zealand visa, and arriving from or departing to those countries.  -  Visa-free access for 30 days to Jeju Island.  - Group tourists from the Philippines can travel visa-free through Yangyang International Airport until May 2024. - Group tourists can only travel to the Gangwon-do region and the metropolitan area of South Korea, and the maximum stay is 15 days."
+    },
+    {
+      "id": "es",
+      "name": "Spain",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "lk",
+      "name": "Sri Lanka",
+      "visaRequirement": "e-visa",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "sd",
+      "name": "Sudan",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "se",
+      "name": "Sweden",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "ch",
+      "name": "Switzerland",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "sy",
+      "name": "Syria",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "tw",
+      "name": "Taiwan",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "tz",
+      "name": "Tanzania",
+      "visaRequirement": "visa-on-arrival",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "th",
+      "name": "Thailand",
+      "visaRequirement": "visa-free",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "tr",
+      "name": "Turkey",
+      "visaRequirement": "e-visa",
+      "allowedStay": "30 days",
+      "tags": ["has-us-visa", "has-schengen-visa"]
+    },
+    {
+      "id": "ug",
+      "name": "Uganda",
+      "visaRequirement": "visa-on-arrival",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "ua",
+      "name": "Ukraine",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ae",
+      "name": "United Arab Emirates",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "gb",
+      "name": "United Kingdom",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "us",
+      "name": "United States",
+      "visaRequirement": "visa-required",
+      "tags": ["has-us-visa"]
+    },
+    {
+      "id": "uy",
+      "name": "Uruguay",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "uz",
+      "name": "Uzbekistan",
+      "visaRequirement": "e-visa",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "ve",
+      "name": "Venezuela",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "vn",
+      "name": "Vietnam",
+      "visaRequirement": "visa-free",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "ye",
+      "name": "Yemen",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "zm",
+      "name": "Zambia",
+      "visaRequirement": "e-visa",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "zw",
+      "name": "Zimbabwe",
+      "visaRequirement": "e-visa",
+      "allowedStay": "3 months",
+      "notes": "Filipinos can apply for an e-visa prior to arrival for tourism purposes. The e-visa is valid for 3 months from the date of issue and allows a stay of up to 3 months.",
+      "tags": []
+    },
+    {
+      "id": "cm",
+      "name": "Cameroon",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "td",
+      "name": "Chad",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "cg",
+      "name": "Congo",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "gy",
+      "name": "Guyana",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "ht",
+      "name": "Haiti",
+      "visaRequirement": "visa-free",
+      "allowedStay": "3 months",
+      "tags": []
+    },
+    {
+      "id": "iq",
+      "name": "Iraq",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ie",
+      "name": "Ireland",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "jo",
+      "name": "Jordan",
+      "visaRequirement": "visa-on-arrival",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "kz",
+      "name": "Kazakhstan",
+      "visaRequirement": "visa-free",
+      "tags": []
+    },
+    {
+      "id": "xk",
+      "name": "Kosovo",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "kg",
+      "name": "Kyrgyzstan",
+      "visaRequirement": "visa-free",
+      "allowedStay": "60 days",
+      "tags": []
+    },
+    {
+      "id": "la",
+      "name": "Laos",
+      "visaRequirement": "visa-free",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "lr",
+      "name": "Liberia",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ly",
+      "name": "Libya",
+      "visaRequirement": "e-visa",
+      "tags": []
+    },
+    {
+      "id": "by",
+      "name": "Belarus",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "cy",
+      "name": "Cyprus",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "er",
+      "name": "Eritrea",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "sz",
+      "name": "eSwatini",
+      "visaRequirement": "visa-free",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "gm",
+      "name": "Gambia",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "ge",
+      "name": "Georgia",
+      "visaRequirement": "visa-free",
+      "allowedStay": "365 days",
+      "tags": []
+    },
+    {
+      "id": "gn",
+      "name": "Guinea",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "gw",
+      "name": "Guinea-Bissau",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "mk",
+      "name": "Macedonia",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ml",
+      "name": "Mali",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "mr",
+      "name": "Mauritania",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "md",
+      "name": "Moldova",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "me",
+      "name": "Montenegro",
+      "visaRequirement": "visa-required",
+      "tags": ["has-us-visa"]
+    },
+    {
+      "id": "cx",
+      "name": "N. Cyprus",
+      "visaRequirement": "visa-required",
+      "notes": "Entry depends on Turkish controls",
+      "tags": []
+    },
+    {
+      "id": "nc",
+      "name": "New Caledonia",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "kp",
+      "name": "North Korea",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ps",
+      "name": "Palestine",
+      "visaRequirement": "visa-required",
+      "notes": "Entry depends on Israeli controls",
+      "tags": []
+    },
+    {
+      "id": "ss",
+      "name": "S. Sudan",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "sl",
+      "name": "Sierra Leone",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "sb",
+      "name": "Solomon Is.",
+      "visaRequirement": "visa-on-arrival",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "so",
+      "name": "Somaliland",
+      "visaRequirement": "visa-on-arrival",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "tj",
+      "name": "Tajikistan",
+      "visaRequirement": "e-visa",
+      "allowedStay": "45 days",
+      "tags": []
+    },
+    {
+      "id": "tl",
+      "name": "Timor-Leste",
+      "visaRequirement": "visa-on-arrival",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "tg",
+      "name": "Togo",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "tt",
+      "name": "Trinidad and Tobago",
+      "visaRequirement": "visa-free",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "eh",
+      "name": "W. Sahara",
+      "visaRequirement": "visa-required",
+      "notes": "Entry dependent on Morocco",
+      "tags": []
+    },
+    {
+      "id": "et",
+      "name": "Ethiopia",
+      "visaRequirement": "e-visa",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "cd",
+      "name": "Dem. Rep. Congo",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ly",
+      "name": "Libya",
+      "visaRequirement": "e-visa",
+      "tags": []
+    },
+    {
+      "id": "by",
+      "name": "Belarus",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "cm",
+      "name": "Cameroon",
+      "visaRequirement": "e-visa",
+      "tags": []
+    },
+    {
+      "id": "td",
+      "name": "Chad",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "cg",
+      "name": "Congo",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "cy",
+      "name": "Cyprus",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "er",
+      "name": "Eritrea",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "sz",
+      "name": "eSwatini",
+      "visaRequirement": "visa-free",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "gm",
+      "name": "Gambia",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "ge",
+      "name": "Georgia",
+      "visaRequirement": "visa-free",
+      "allowedStay": "365 days",
+      "tags": []
+    },
+    {
+      "id": "gn",
+      "name": "Guinea",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "gw",
+      "name": "Guinea-Bissau",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "gy",
+      "name": "Guyana",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "ht",
+      "name": "Haiti",
+      "visaRequirement": "visa-free",
+      "allowedStay": "3 months",
+      "tags": []
+    },
+    {
+      "id": "ie",
+      "name": "Ireland",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "xk",
+      "name": "Kosovo",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "kg",
+      "name": "Kyrgyzstan",
+      "visaRequirement": "visa-free",
+      "allowedStay": "60 days",
+      "tags": []
+    },
+    {
+      "id": "lr",
+      "name": "Liberia",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "mk",
+      "name": "Macedonia",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ml",
+      "name": "Mali",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "mr",
+      "name": "Mauritania",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "md",
+      "name": "Moldova",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "me",
+      "name": "Montenegro",
+      "visaRequirement": "visa-required",
+      "tags": ["has-us-visa"]
+    },
+    {
+      "id": "cx",
+      "name": "N. Cyprus",
+      "visaRequirement": "visa-required",
+      "notes": "Entry depends on Turkish controls",
+      "tags": []
+    },
+    {
+      "id": "nc",
+      "name": "New Caledonia",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "kp",
+      "name": "North Korea",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ps",
+      "name": "Palestine",
+      "visaRequirement": "visa-required",
+      "notes": "Entry depends on Israeli controls",
+      "tags": []
+    },
+    {
+      "id": "ss",
+      "name": "S. Sudan",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "us",
+      "name": "United States of America",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "do",
+      "name": "Dominican Rep.",
+      "visaRequirement": "visa-required",
+      "notes": "Residents of the U.S., Canada, and the EU (including the UK) do not need a visa for up to 30 days with a valid passport.",
+      "tags": ["has-us-visa"]
+    },
+    {
+      "id": "bs",
+      "name": "Bahamas",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "fk",
+      "name": "Falkland Is.",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "gl",
+      "name": "Greenland",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "tf",
+      "name": "Fr. S. Antarctic Lands",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ls",
+      "name": "Lesotho",
+      "visaRequirement": "visa-free",
+      "allowedStay": "14 days",
+      "tags": []
+    },
+    {
+      "id": "sr",
+      "name": "Suriname",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "pr",
+      "name": "Puerto Rico",
+      "visaRequirement": "visa-required",
+      "notes": "Same requirements as the United States.",
+      "tags": []
+    },
+    {
+      "id": "jm",
+      "name": "Jamaica",
+      "visaRequirement": "visa-free",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "na",
+      "name": "Namibia",
+      "visaRequirement": "visa-free",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "gh",
+      "name": "Ghana",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ci",
+      "name": "Côte d'Ivoire",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "cf",
+      "name": "Central African Rep.",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "ga",
+      "name": "Gabon",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "gq",
+      "name": "Eq. Guinea",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "mw",
+      "name": "Malawi",
+      "visaRequirement": "visa-on-arrival",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "mz",
+      "name": "Mozambique",
+      "visaRequirement": "visa-on-arrival",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "lb",
+      "name": "Lebanon",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "mg",
+      "name": "Madagascar",
+      "visaRequirement": "visa-on-arrival",
+      "allowedStay": "90 days",
+      "tags": []
+    },
+    {
+      "id": "tn",
+      "name": "Tunisia",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "kw",
+      "name": "Kuwait",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "vu",
+      "name": "Vanuatu",
+      "visaRequirement": "visa-free",
+      "allowedStay": "30 days",
+      "tags": []
+    },
+    {
+      "id": "tm",
+      "name": "Turkmenistan",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "hu",
+      "name": "Hungary",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "lt",
+      "name": "Lithuania",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "lv",
+      "name": "Latvia",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "ee",
+      "name": "Estonia",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "lu",
+      "name": "Luxembourg",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "nz",
+      "name": "New Zealand",
+      "visaRequirement": "visa-required",
+      "tags": []
+    },
+    {
+      "id": "is",
+      "name": "Iceland",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "cz",
+      "name": "Czechia",
+      "visaRequirement": "visa-required",
+      "tags": ["has-schengen-visa"]
+    },
+    {
+      "id": "aq",
+      "name": "Antarctica",
+      "visaRequirement": "visa-required",
+      "notes": "Special permit required",
+      "tags": []
+    },
+    {
+      "id": "dj",
+      "name": "Djibouti",
+      "visaRequirement": "visa-on-arrival",
+      "allowedStay": "31 days",
+      "notes": "eVisa also available.",
+      "tags": []
+    },
+    {
+      "id": "ba",
+      "name": "Bosnia and Herz.",
+      "visaRequirement": "visa-required",
+      "notes": "Visa-free for up to 30 days for valid UK or Schengen visa holders.",
+      "tags": []
+    }
+  ]
+}
