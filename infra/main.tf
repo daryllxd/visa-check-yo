@@ -100,7 +100,7 @@ resource "aws_security_group" "app_sg" {
 
 # EC2 instance
 resource "aws_instance" "app_server" {
-  ami           = "ami-0df7a207adb9748c7"  # Amazon Linux 2023 AMI
+  ami           = "ami-0df7a207adb9748c7"  # Ubuntu AMI
   instance_type = "t2.micro"
   key_name      = var.key_name
   subnet_id     = aws_subnet.public.id
@@ -109,11 +109,11 @@ resource "aws_instance" "app_server" {
 
   user_data = <<-EOF
               #!/bin/bash
-              yum update -y
-              yum install -y docker
+              apt-get update
+              apt-get install -y docker.io
               systemctl start docker
               systemctl enable docker
-              usermod -a -G docker ec2-user
+              usermod -aG docker ubuntu
               EOF
 
   tags = {
