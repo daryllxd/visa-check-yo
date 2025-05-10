@@ -8,7 +8,8 @@ terraform {
 }
 
 provider "aws" {
-  region = "ap-southeast-1"  # Singapore region, change as needed
+  region  = "ap-southeast-1"
+  profile = "daryll-visa-check"
 }
 
 # Variables

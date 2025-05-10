@@ -8,6 +8,7 @@ if [ -z "$1" ]; then
 fi
 
 EC2_IP=$1
+KEY_PATH="../certificates/visa-check-key.pem"
 
 # Build and push the Docker image
 echo "Building Docker image..."
@@ -15,11 +16,11 @@ docker-compose build
 
 # Copy necessary files to EC2
 echo "Copying files to EC2..."
-scp -r ./* ec2-user@$EC2_IP:~/app/
+scp -i $KEY_PATH -r ./* ec2-user@$EC2_IP:~/app/
 
 # SSH into EC2 and start the application
 echo "Deploying application..."
-ssh ec2-user@$EC2_IP << 'ENDSSH'
+ssh -i $KEY_PATH ec2-user@$EC2_IP << 'ENDSSH'
 cd ~/app
 docker-compose down
 docker-compose up -d
