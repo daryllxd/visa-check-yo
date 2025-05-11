@@ -35,10 +35,13 @@ docker save visa-check-app:latest > visa-check-app.tar
 echo "Setting up app directory on EC2..."
 ssh -i $KEY_PATH ubuntu@$EC2_IP "mkdir -p ~/app"
 
-# Copy only the necessary files to EC2
+# Copy only the necessary files to EC2 using rsync
 echo "Copying files to EC2..."
-scp -i $KEY_PATH docker-compose.yml ubuntu@$EC2_IP:~/app/
-scp -i $KEY_PATH visa-check-app.tar ubuntu@$EC2_IP:~/app/
+rsync -avz --progress \
+    -e "ssh -i $KEY_PATH" \
+    docker-compose.yml \
+    visa-check-app.tar \
+    ubuntu@$EC2_IP:~/app/
 
 # SSH into EC2 and start the application
 echo "Deploying application..."
