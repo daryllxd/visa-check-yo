@@ -13,9 +13,35 @@ provider "aws" {
 }
 
 # Variables
+variable "aws_region" {
+  description = "AWS region to deploy resources"
+  type        = string
+}
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+}
+
 variable "key_name" {
   description = "Name of the AWS key pair to use for SSH access"
   type        = string
+}
+
+variable "environment" {
+  description = "Environment name for tagging"
+  type        = string
+}
+
+variable "project" {
+  description = "Project name for tagging"
+  type        = string
+}
+
+variable "admin_cidr_blocks" {
+  description = "List of CIDR blocks allowed to access the instance via SSH"
+  type        = list(string)
+  default     = ["203.0.113.0/24"]  # Example IP range, replace with your actual IP
 }
 
 # VPC Configuration
@@ -80,7 +106,8 @@ resource "aws_security_group" "app_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.admin_cidr_blocks
+    description = "SSH access from admin IPs"
   }
 
   ingress {
@@ -88,6 +115,7 @@ resource "aws_security_group" "app_sg" {
     to_port     = 3000
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+    description = "Application access"
   }
 
   egress {
@@ -95,6 +123,13 @@ resource "aws_security_group" "app_sg" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow all outbound traffic"
+  }
+
+  tags = {
+    Name        = "${var.project}-sg"
+    Environment = var.environment
+    Project     = var.project
   }
 }
 
