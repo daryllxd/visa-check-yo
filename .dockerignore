@@ -1,0 +1,70 @@
+# Dependencies
+node_modules
+.pnpm-store
+.npm
+.yarn
+
+# Next.js build output
+.next
+out
+
+# Testing
+coverage
+.nyc_output
+__tests__
+*.test.*
+*.spec.*
+
+# Version control
+.git
+.gitignore
+.gitattributes
+
+# Environment files
+.env*
+!.env.example
+
+# IDE and editor files
+.idea
+.vscode
+*.swp
+*.swo
+.DS_Store
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build artifacts
+*.log
+dist
+build
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Terraform
+infra/
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform.lock.hcl
+
+# Deployment
+deployment-sounds/
+certificates/
+*.pem
+*.key
+
+# Misc
+README.md
+LICENSE
+*.md
+.editorconfig
+.prettierrc
+.eslintrc 
