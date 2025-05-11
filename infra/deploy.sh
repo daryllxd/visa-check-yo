@@ -1,9 +1,22 @@
 #!/bin/bash
 
+# Function to play sound
+play_sound() {
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        afplay "./deployment-sounds/$1"
+    elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        paplay "./deployment-sounds/$1"
+    fi
+}
+
+# Play start sound
+play_sound "acknowledged-hq.mp3"
+
 # Check if IP address is provided
 if [ -z "$1" ]; then
     echo "Please provide the EC2 instance IP address"
     echo "Usage: ./deploy.sh <ec2-ip>"
+    play_sound "death-cry.mp3"
     exit 1
 fi
 
@@ -76,6 +89,13 @@ docker ps
 rm visa-check-app.tar
 ENDSSH
 
+# Check if the SSH command failed
+if [ $? -ne 0 ]; then
+    echo "Deployment failed!"
+    play_sound "death-cry.mp3"
+    exit 1
+fi
+
 # Clean up local files
 rm visa-check-app.tar
 
@@ -87,8 +107,4 @@ echo "Checking container status..."
 ssh -i $KEY_PATH ubuntu@$EC2_IP 'docker ps'
 
 # Play success sound
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    afplay /System/Library/Sounds/Glass.aiff
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    paplay /usr/share/sounds/freedesktop/stereo/complete.oga
-fi 
+play_sound "systems-functional.mp3" 
