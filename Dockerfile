@@ -26,8 +26,9 @@ RUN pnpm build
 FROM node:20-alpine AS runner
 WORKDIR /app
 
-# Install pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Install pnpm and curl for healthcheck
+RUN corepack enable && corepack prepare pnpm@latest --activate && \
+    apk add --no-cache curl
 
 ENV NODE_ENV=production
 
@@ -39,6 +40,10 @@ COPY --from=builder /app/package.json ./package.json
 
 # Expose port
 EXPOSE 3000
+
+# Add healthcheck
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:3000/api/health || exit 1
 
 # Start the application
 CMD ["pnpm", "start"]

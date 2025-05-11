@@ -54,6 +54,24 @@ echo "Starting application..."
 docker-compose down
 docker-compose up -d
 
+# Wait for application to be ready
+echo "Waiting for application to be ready..."
+for i in {1..30}; do
+    if curl -s http://localhost:3000/api/health > /dev/null; then
+        echo "Application is ready!"
+        break
+    fi
+    if [ $i -eq 30 ]; then
+        echo "ERROR: Application failed to start within timeout"
+        exit 1
+    fi
+    sleep 2
+done
+
+# Show container status
+echo "Container status:"
+docker ps
+
 # Clean up
 rm visa-check-app.tar
 ENDSSH
@@ -61,4 +79,16 @@ ENDSSH
 # Clean up local files
 rm visa-check-app.tar
 
-echo "Deployment complete! Application should be running at http://$EC2_IP:3000" 
+echo "Deployment complete! Application should be running at http://$EC2_IP:3000"
+echo "To verify deployment, run: curl http://$EC2_IP:3000/api/health"
+
+# Show container status
+echo "Checking container status..."
+ssh -i $KEY_PATH ubuntu@$EC2_IP 'docker ps'
+
+# Play success sound
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    afplay /System/Library/Sounds/Glass.aiff
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    paplay /usr/share/sounds/freedesktop/stereo/complete.oga
+fi 
