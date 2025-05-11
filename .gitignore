@@ -48,3 +48,15 @@ next-env.d.ts
 !example.tfvars
 .terraformrc
 terraform.rc
+
+# Terraform
+*.tfvars
+*.tfvars.json
+!terraform.tfvars.example
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate.*
+crash.log
+crash.*.log
