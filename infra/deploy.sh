@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Enable strict mode for the main script
+set -euo pipefail
+
 # Function to play sound
 play_sound() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -45,7 +48,27 @@ rsync -avz --progress \
 
 # SSH into EC2 and start the application
 echo "Deploying application..."
-ssh -i $KEY_PATH ubuntu@$EC2_IP << 'ENDSSH'
+ssh -i "$KEY_PATH" ubuntu@"$EC2_IP" << 'ENDSSH'
+# Enable strict mode for the remote session
+set -euo pipefail
+
+# Check and clean up disk space
+echo "Checking disk space..."
+df -h
+
+# Clean up old Docker resources
+echo "Cleaning up old Docker resources..."
+sudo docker system prune -af --volumes
+
+# Clean up old package files
+echo "Cleaning up old package files..."
+sudo apt-get clean
+sudo apt-get autoremove -y
+
+# Check disk space again
+echo "Disk space after cleanup:"
+df -h
+
 # Install Docker and Docker Compose
 sudo apt-get update
 sudo apt-get install -y docker.io docker-compose
@@ -57,18 +80,15 @@ sudo systemctl enable docker
 # Add ubuntu user to docker group
 sudo usermod -aG docker ubuntu
 
-# Apply the new group membership
-newgrp docker
-
 cd ~/app
 # Load the Docker image
 echo "Loading Docker image..."
-docker load < visa-check-app.tar
+sudo docker load < visa-check-app.tar
 
 # Start the application
 echo "Starting application..."
-docker-compose down
-docker-compose up -d
+sudo docker-compose down
+sudo docker-compose up -d
 
 # Wait for application to be ready
 echo "Waiting for application to be ready..."
@@ -86,7 +106,7 @@ done
 
 # Show container status
 echo "Container status:"
-docker ps
+sudo docker ps
 
 # Clean up
 rm visa-check-app.tar
