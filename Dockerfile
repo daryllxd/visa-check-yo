@@ -1,9 +1,10 @@
+ARG PNPM_VERSION=10.10.0
+
 # Stage 1: Dependencies
 FROM node:20-alpine AS deps
 WORKDIR /app
 
-# Use 10.10.0 as it is the latest version today
-RUN corepack enable && corepack prepare pnpm@10.10.0 --activate
+RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 
 COPY package.json pnpm-lock.yaml ./
 
@@ -13,7 +14,7 @@ RUN pnpm install --frozen-lockfile
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 
 # Copy dependencies from deps stage
 COPY --from=deps /app/node_modules ./node_modules
@@ -26,8 +27,8 @@ RUN pnpm build
 FROM node:20-alpine AS runner
 WORKDIR /app
 
-# Install pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate && \
+    apk add --no-cache curl
 
 ENV NODE_ENV=production
 
@@ -39,6 +40,10 @@ COPY --from=builder /app/package.json ./package.json
 
 # Expose port
 EXPOSE 3000
+
+# Add healthcheck
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:3000/api/health || exit 1
 
 # Start the application
 CMD ["pnpm", "start"]

@@ -1,0 +1,16 @@
+# AWS Region
+aws_region = "ap-southeast-1"
+
+# EC2 Instance Configuration
+instance_type = "t2.micro"
+key_name      = "visa-check-key"  # Replace this with your actual key pair name
+
+# Environment
+environment = "development"
+project     = "visa-check"
+
+# Security
+admin_cidr_blocks = [
+  "203.0.113.0/24",  # Example office IP range
+  "198.51.100.0/24"  # Example VPN IP range
+]

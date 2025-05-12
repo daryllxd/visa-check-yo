@@ -58,6 +58,39 @@ pnpm dev
 - `lib/`: Utility functions and shared code
 - `public/`: Static assets
 
+## Infrastructure Management (Terraform)
+
+All infrastructure code is located in the `infra/` directory. You can run Terraform commands from the project root by specifying the directory:
+
+```bash
+# Initialize Terraform (run once)
+terraform -chdir=infra init
+
+# See what changes will be made
+terraform -chdir=infra plan
+
+# Apply changes to your infrastructure
+terraform -chdir=infra apply
+
+# Show current infrastructure state
+terraform -chdir=infra show
+
+# Destroy all resources created by Terraform
+terraform -chdir=infra destroy
+
+# Check the public_ip address of the instance
+terraform -chdir=infra output public_ip
+```
+
+## Infrastructure Diagram
+
+![Terraform Infrastructure](terraform_infra.png)
+
+**Note:**
+
+- Store sensitive variables (like AWS keys) outside of version control.
+- Update `infra/terraform.tfvars` with your own values before applying.
+
 ## Future Integrations
 
 The application is designed to be easily extended with:
