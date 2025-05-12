@@ -82,6 +82,10 @@ terraform -chdir=infra destroy
 terraform -chdir=infra output public_ip
 ```
 
+## Infrastructure Diagram
+
+![Terraform Infrastructure](terraform_infra.png)
+
 **Note:**
 
 - Store sensitive variables (like AWS keys) outside of version control.
