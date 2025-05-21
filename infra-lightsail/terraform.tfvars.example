@@ -1,0 +1,11 @@
+# AWS Region
+aws_region = "ap-southeast-1"
+
+# AWS Profile
+aws_profile = "daryll-visa-check"
+
+# Instance Configuration
+instance_name = "visa-check-app"
+blueprint_id  = "ubuntu_22_04"
+bundle_id     = "nano_2_0"  # 1GB RAM, 1 vCPU, 40GB SSD
+key_pair_name = "visa-check-key" 
