@@ -24,7 +24,7 @@ if [ -z "$1" ]; then
 fi
 
 EC2_IP=$1
-KEY_PATH="certificates/visa-check-key.pem"
+KEY_PATH="certificates/visa-check-key-2.pem"
 
 # Build the Docker image locally
 echo "Building Docker image locally..."
