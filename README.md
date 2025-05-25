@@ -82,6 +82,12 @@ terraform -chdir=infra destroy
 terraform -chdir=infra output public_ip
 ```
 
+## Deployment
+
+```
+$ ./infra/deploy.sh $(terraform -chdir=infra-lightsail output -raw public_ip)
+```
+
 ## Infrastructure Diagram
 
 ![Terraform Infrastructure](terraform_infra.png)
@@ -90,6 +96,13 @@ terraform -chdir=infra output public_ip
 
 - Store sensitive variables (like AWS keys) outside of version control.
 - Update `infra/terraform.tfvars` with your own values before applying.
+
+## Terraform (Lightsail)
+
+```
+terraform -chdir=infra-lightsail apply
+terraform -chdir=infra-lightsail output public_ip
+```
 
 ## Future Integrations
 
