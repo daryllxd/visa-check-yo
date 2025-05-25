@@ -67,6 +67,18 @@ resource "aws_subnet" "public" {
   }
 }
 
+# Private Subnet
+resource "aws_subnet" "private" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.2.0/24"
+  availability_zone       = "ap-southeast-1a"
+  map_public_ip_on_launch = false
+
+  tags = {
+    Name = "visa-check-private-subnet"
+  }
+}
+
 # Internet Gateway
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
@@ -96,27 +108,11 @@ resource "aws_route_table_association" "public" {
   route_table_id = aws_route_table.public.id
 }
 
-# Security group for the EC2 instance
-resource "aws_security_group" "app_sg" {
-  name        = "app-security-group"
-  description = "Security group for the application"
+# Security group for the ALB
+resource "aws_security_group" "alb_sg" {
+  name        = "alb-security-group"
+  description = "Security group for the Application Load Balancer"
   vpc_id      = aws_vpc.main.id
-
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = var.admin_cidr_blocks
-    description = "SSH access from admin IPs"
-  }
-
-  ingress {
-    from_port   = 3000
-    to_port     = 3000
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-    description = "Application access"
-  }
 
   ingress {
     description = "HTTP"
@@ -131,13 +127,45 @@ resource "aws_security_group" "app_sg" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "visa-check-alb-sg"
+  }
+}
+
+# Security group for the EC2 instance (more restrictive)
+resource "aws_security_group" "app_sg" {
+  name        = "app-security-group"
+  description = "Security group for the application"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    from_port       = 3000
+    to_port         = 3000
+    protocol        = "tcp"
+    security_groups = [aws_security_group.alb_sg.id]
+    description     = "Allow traffic from ALB"
+  }
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]  # Allow SSH from anywhere
+    description = "SSH access from anywhere"
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
     description = "Allow all outbound traffic"
   }
 
   tags = {
-    Name        = "${var.project}-sg"
-    Environment = var.environment
-    Project     = var.project
+    Name = "visa-check-app-sg"
   }
 }
 
@@ -146,7 +174,9 @@ resource "aws_instance" "app_server" {
   ami           = "ami-0df7a207adb9748c7"  # Ubuntu AMI
   instance_type = "t2.micro"
   key_name      = var.key_name
-  subnet_id     = aws_subnet.public.id
+  subnet_id     = aws_subnet.public.id    # Changed to public subnet
+
+  associate_public_ip_address = true  # Ensure public IP is assigned
 
   vpc_security_group_ids = [aws_security_group.app_sg.id]
 
@@ -164,7 +194,58 @@ resource "aws_instance" "app_server" {
   }
 }
 
-# Output the public IP
-output "public_ip" {
+# Application Load Balancer
+resource "aws_lb" "app" {
+  name               = "visa-check-alb"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.alb_sg.id]
+  subnets            = [aws_subnet.public.id]
+
+  tags = {
+    Name = "visa-check-alb"
+  }
+}
+
+# ALB Target Group
+resource "aws_lb_target_group" "app" {
+  name     = "visa-check-tg"
+  port     = 3000
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.main.id
+
+  health_check {
+    path                = "/api/health"
+    healthy_threshold   = 2
+    unhealthy_threshold = 10
+  }
+}
+
+# ALB Listener
+resource "aws_lb_listener" "app" {
+  load_balancer_arn = aws_lb.app.arn
+  port              = 80
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.app.arn
+  }
+}
+
+# ALB Target Group Attachment
+resource "aws_lb_target_group_attachment" "app" {
+  target_group_arn = aws_lb_target_group.app.arn
+  target_id        = aws_instance.app_server.id
+  port             = 3000
+}
+
+# Output the ALB DNS name instead of EC2 IP
+output "alb_dns_name" {
+  value = aws_lb.app.dns_name
+}
+
+# Output the EC2 instance's public IP
+output "ec2_public_ip" {
   value = aws_instance.app_server.public_ip
 } 
