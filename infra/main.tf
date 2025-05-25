@@ -55,22 +55,34 @@ resource "aws_vpc" "main" {
   }
 }
 
-# Public Subnet
-resource "aws_subnet" "public" {
+# Public Subnet 1
+resource "aws_subnet" "public_1" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.1.0/24"
   availability_zone       = "ap-southeast-1a"
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "visa-check-public-subnet"
+    Name = "visa-check-public-subnet-1"
+  }
+}
+
+# Public Subnet 2
+resource "aws_subnet" "public_2" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.2.0/24"
+  availability_zone       = "ap-southeast-1b"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "visa-check-public-subnet-2"
   }
 }
 
 # Private Subnet
 resource "aws_subnet" "private" {
   vpc_id                  = aws_vpc.main.id
-  cidr_block              = "10.0.2.0/24"
+  cidr_block              = "10.0.3.0/24"
   availability_zone       = "ap-southeast-1a"
   map_public_ip_on_launch = false
 
@@ -102,9 +114,15 @@ resource "aws_route_table" "public" {
   }
 }
 
-# Route Table Association
-resource "aws_route_table_association" "public" {
-  subnet_id      = aws_subnet.public.id
+# Route Table Association for Public Subnet 1
+resource "aws_route_table_association" "public_1" {
+  subnet_id      = aws_subnet.public_1.id
+  route_table_id = aws_route_table.public.id
+}
+
+# Route Table Association for Public Subnet 2
+resource "aws_route_table_association" "public_2" {
+  subnet_id      = aws_subnet.public_2.id
   route_table_id = aws_route_table.public.id
 }
 
@@ -174,7 +192,7 @@ resource "aws_instance" "app_server" {
   ami           = "ami-0df7a207adb9748c7"  # Ubuntu AMI
   instance_type = "t2.micro"
   key_name      = var.key_name
-  subnet_id     = aws_subnet.public.id    # Changed to public subnet
+  subnet_id     = aws_subnet.public_1.id    # Changed to public subnet
 
   associate_public_ip_address = true  # Ensure public IP is assigned
 
@@ -200,7 +218,7 @@ resource "aws_lb" "app" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
-  subnets            = [aws_subnet.public.id]
+  subnets            = [aws_subnet.public_1.id, aws_subnet.public_2.id]
 
   tags = {
     Name = "visa-check-alb"
