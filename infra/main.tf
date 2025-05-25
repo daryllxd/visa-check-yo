@@ -167,6 +167,14 @@ resource "aws_security_group" "app_sg" {
   }
 
   ingress {
+    from_port   = 3000
+    to_port     = 3000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]  # Allow direct HTTP access from anywhere
+    description = "Allow direct HTTP access"
+  }
+
+  ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
