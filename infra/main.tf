@@ -79,18 +79,6 @@ resource "aws_subnet" "public_2" {
   }
 }
 
-# Private Subnet
-resource "aws_subnet" "private" {
-  vpc_id                  = aws_vpc.main.id
-  cidr_block              = "10.0.3.0/24"
-  availability_zone       = "ap-southeast-1a"
-  map_public_ip_on_launch = false
-
-  tags = {
-    Name = "visa-check-private-subnet"
-  }
-}
-
 # Internet Gateway
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
@@ -195,18 +183,19 @@ resource "aws_security_group" "app_sg" {
   }
 }
 
-# EC2 instance
-resource "aws_instance" "app_server" {
-  ami           = "ami-0df7a207adb9748c7"  # Ubuntu AMI
+# Launch Template
+resource "aws_launch_template" "app" {
+  name_prefix   = "visa-check-template"
+  image_id      = "ami-0df7a207adb9748c7"  # Ubuntu AMI
   instance_type = "t2.micro"
   key_name      = var.key_name
-  subnet_id     = aws_subnet.public_1.id    # Changed to public subnet
 
-  associate_public_ip_address = true  # Ensure public IP is assigned
+  network_interfaces {
+    associate_public_ip_address = true
+    security_groups            = [aws_security_group.app_sg.id]
+  }
 
-  vpc_security_group_ids = [aws_security_group.app_sg.id]
-
-  user_data = <<-EOF
+  user_data = base64encode(<<-EOF
               #!/bin/bash
               apt-get update
               apt-get install -y docker.io
@@ -214,9 +203,88 @@ resource "aws_instance" "app_server" {
               systemctl enable docker
               usermod -aG docker ubuntu
               EOF
+  )
 
-  tags = {
-    Name = "visa-check-app"
+  tag_specifications {
+    resource_type = "instance"
+    tags = {
+      Name = "visa-check-app"
+    }
+  }
+}
+
+# Auto Scaling Group
+resource "aws_autoscaling_group" "app" {
+  name                = "visa-check-asg"
+  desired_capacity    = 2
+  max_size           = 4
+  min_size           = 2
+  target_group_arns  = [aws_lb_target_group.app.arn]
+  vpc_zone_identifier = [aws_subnet.public_1.id, aws_subnet.public_2.id]
+
+  launch_template {
+    id      = aws_launch_template.app.id
+    version = "$Latest"
+  }
+
+  tag {
+    key                 = "Name"
+    value               = "visa-check-app"
+    propagate_at_launch = true
+  }
+}
+
+# Auto Scaling Policy - Scale up on high CPU
+resource "aws_autoscaling_policy" "scale_up" {
+  name                   = "visa-check-scale-up"
+  scaling_adjustment     = 1
+  adjustment_type        = "ChangeInCapacity"
+  cooldown              = 300
+  autoscaling_group_name = aws_autoscaling_group.app.name
+}
+
+# Auto Scaling Policy - Scale down on low CPU
+resource "aws_autoscaling_policy" "scale_down" {
+  name                   = "visa-check-scale-down"
+  scaling_adjustment     = -1
+  adjustment_type        = "ChangeInCapacity"
+  cooldown              = 300
+  autoscaling_group_name = aws_autoscaling_group.app.name
+}
+
+# CloudWatch Alarm - High CPU
+resource "aws_cloudwatch_metric_alarm" "high_cpu" {
+  alarm_name          = "visa-check-high-cpu"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = "2"
+  metric_name         = "CPUUtilization"
+  namespace           = "AWS/EC2"
+  period             = "120"
+  statistic          = "Average"
+  threshold          = "80"
+  alarm_description  = "Scale up if CPU > 80% for 4 minutes"
+  alarm_actions      = [aws_autoscaling_policy.scale_up.arn]
+
+  dimensions = {
+    AutoScalingGroupName = aws_autoscaling_group.app.name
+  }
+}
+
+# CloudWatch Alarm - Low CPU
+resource "aws_cloudwatch_metric_alarm" "low_cpu" {
+  alarm_name          = "visa-check-low-cpu"
+  comparison_operator = "LessThanOrEqualToThreshold"
+  evaluation_periods  = "2"
+  metric_name         = "CPUUtilization"
+  namespace           = "AWS/EC2"
+  period             = "120"
+  statistic          = "Average"
+  threshold          = "20"
+  alarm_description  = "Scale down if CPU < 20% for 4 minutes"
+  alarm_actions      = [aws_autoscaling_policy.scale_down.arn]
+
+  dimensions = {
+    AutoScalingGroupName = aws_autoscaling_group.app.name
   }
 }
 
@@ -259,19 +327,20 @@ resource "aws_lb_listener" "app" {
   }
 }
 
-# ALB Target Group Attachment
-resource "aws_lb_target_group_attachment" "app" {
-  target_group_arn = aws_lb_target_group.app.arn
-  target_id        = aws_instance.app_server.id
-  port             = 3000
+# Data source to get all instances in the ASG
+data "aws_instances" "asg_instances" {
+  instance_tags = {
+    "aws:autoscaling:groupName" = aws_autoscaling_group.app.name
+  }
 }
 
-# Output the ALB DNS name instead of EC2 IP
+# Output the ALB DNS name
 output "alb_dns_name" {
   value = aws_lb.app.dns_name
 }
 
-# Output the EC2 instance's public IP
-output "ec2_public_ip" {
-  value = aws_instance.app_server.public_ip
+# Output all instance IPs
+output "instance_ips" {
+  value = data.aws_instances.asg_instances.public_ips
+  description = "Public IPs of all instances in the Auto Scaling Group"
 } 
